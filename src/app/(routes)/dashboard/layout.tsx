@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 
 const DashBoardLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex">
+    <div className="flex bg-gray-2">
       <SideBar />
       {children}
     </div>

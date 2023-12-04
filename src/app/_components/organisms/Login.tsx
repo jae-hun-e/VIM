@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import AIM from '@assets/Icon_AIM.svg';
-import LoginIcon from '@assets/btn_login.svg';
-import LoginOffIcon from '@assets/btn_login_off.svg';
+import AIM from '@assets/logo/Icon_AIM.svg';
+import LoginIcon from '@assets/btn/btn_login.svg';
+import LoginOffIcon from '@assets/btn/btn_login_off.svg';
 import { cls } from '@utils/util';
 interface IForm {
   id: string;
@@ -47,9 +47,7 @@ const Login = () => {
     router.push('/dashboard/admin');
   };
 
-  const onLogin = () => {
-    return watch('id') && watch('pw');
-  };
+  const onLogin = () => !!(watch('id') && watch('pw'));
 
   return (
     <article className="flex flex-col items-center justify-center text-black w-[961px] h-[685px] rounded-[48px] bg-white shadow-lg">

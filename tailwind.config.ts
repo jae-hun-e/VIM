@@ -24,6 +24,9 @@ const config: Config = {
         'sub-1': 'var(--sub-1)',
         'sub-2': 'var(--sub-2)',
         'sub-3': 'var(--sub-3)'
+      },
+      fontWeight: {
+        medium: '500px'
       }
     }
   },
