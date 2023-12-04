@@ -1,5 +1,5 @@
 import Hydrated from '@services/Hydrated';
-import GetTest from '@/app/(routes)/GetTest';
+import GetTest from '@/app/(routes)/test/GetTest';
 
 export default function Test() {
   return (

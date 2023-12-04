@@ -2,26 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer components {
+    .all-\[unset\] {
+        all: unset;
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+:root {
+    --default : rgba(22, 22, 22, 1);
+    --grey-1: rgba(106, 106, 106, 1);
+    --grey-2: rgba(166, 166, 166, 1);
+    --grey-3: rgba(238, 238, 238, 1);
+    --grey-4: rgba(249, 249, 249, 1);
+    --main: rgba(63, 154, 255, 1);
+    --sub-1: rgba(209, 231, 255, 1);
+    --sub-2: rgba(234, 240, 255, 1);
+    --sub-3: rgba(246, 250, 255, 1);
+    --fail: rgba(241, 66, 66, 1);
+    --fail-2: rgba(248, 229, 229, 1);
 }
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --foreground-rgb: 255, 255, 255;*/
+/*    --background-start-rgb: 0, 0, 0;*/
+/*    --background-end-rgb: 0, 0, 0;*/
+/*  }*/
+/*}*/
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  /*color: rgb(var(--foreground-rgb));*/
+  /*background: linear-gradient(*/
+  /*    to bottom,*/
+  /*    transparent,*/
+  /*    rgb(var(--background-end-rgb))*/
+  /*  )*/
+  /*  rgb(var(--background-start-rgb));*/
+    font-family:'Roboto-Regular',Helvetica
 }
