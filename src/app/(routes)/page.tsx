@@ -5,11 +5,12 @@ import { useState } from 'react';
 import Login from '@components/organisms/Login';
 import Logo from '@assets/icon_logo.svg';
 import DescribeImg from '@assets/Icon_describeImg.svg';
+import { cls } from '@utils/util';
 
 const Register = () => {
   const [tab, setTab] = useState<string>('');
   return (
-    <article className="w-full h-[100vh]">
+    <article className={cls(tab === 'login' ? 'bg-sub-3' : '', 'w-full h-[100vh]')}>
       <RegisterHeader onClickTag={setTab} onSelectTag={tab} />
       <div className="flex justify-center items-center w-full h-full text-default">
         {tab !== 'login' ? (
