@@ -17,6 +17,7 @@ const config: Config = {
         'gray-1': 'var(--gray-1)',
         'gray-2': 'var(--gray-2)',
         'gray-3': 'var(--gray-3)',
+        'gray-3-op': 'var(--gray-3-op)',
         'gray-4': 'var(--gray-4)',
         fail: 'var(--fail)',
         'fail-2': 'var(--fail-2)',

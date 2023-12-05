@@ -7,12 +7,14 @@ import FloorIPSetting from '@components/organisms/FloorIPSetting';
 import { useState } from 'react';
 import RightArrowBtn from '@components/molecules/RightArrowBtn';
 import LeftArrowBtn from '@components/molecules/LeftArrowBtn';
+import FailModel from '@components/molecules/FailModel';
 
 export interface DefaultSettingState {
   [key: string]: string;
 }
 const AdminPage = () => {
   const [curPage, setCurPage] = useState<number>(0);
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const { register, handleSubmit, watch } = useForm<DefaultSettingState>();
 
   const defaultSettingState = [
@@ -39,11 +41,12 @@ const AdminPage = () => {
   };
   pageNation();
 
-  const isDisabled = (): boolean =>
+  const validatedState = (): boolean =>
     !!(watch('gateway') && watch('dns') && watch('startIP') && watch('endIP') && watch('floor'));
 
   const onSubmit = (data: DefaultSettingState) => {
-    isDisabled();
+    setIsDisabled(validatedState());
+
     console.log('data', data);
   };
   return (
@@ -67,17 +70,12 @@ const AdminPage = () => {
                     )}
                     {...register(type, { required: true })}
                   />
-                  {(type === 'floor' || type === 'endIP') && (
-                    <button className="w-[66px] h-[36px]">
-                      <BtnInput />
-                    </button>
-                  )}
                 </div>
               );
             })}
           </article>
 
-          <article className="w-full flex">
+          <article className="w-full flex justify-center">
             {Number(watch('floor')) > 4 && curPage > 0 && (
               <LeftArrowBtn className="pb-[72px]" onClick={() => setCurPage(curPage - 1)} />
             )}
@@ -88,10 +86,15 @@ const AdminPage = () => {
           </article>
 
           <div className="flex justify-end">
-            <SaveBtn disabled={isDisabled()} />
+            <SaveBtn disabled={isDisabled} />
           </div>
         </form>
       </article>
+      {
+        isDisabled ? (
+          <FailModel isShow={isDisabled} handleClose={() => setIsDisabled(false)} />
+        ) : null //기계역할
+      }
     </section>
   );
 };
