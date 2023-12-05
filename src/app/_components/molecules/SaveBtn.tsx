@@ -1,8 +1,7 @@
 import BtnSave from '@assets/btn/btn_save.svg';
 import BtnSaveOff from '@assets/btn/btn_save_off.svg';
-interface SaveBtnProps {
-  className?: string;
-  onClick?: () => void;
+import { BtnProps } from '@customTypes/commendTypes';
+interface SaveBtnProps extends BtnProps {
   disabled?: boolean;
 }
 const SaveBtn = ({ className, onClick, disabled }: SaveBtnProps) => {

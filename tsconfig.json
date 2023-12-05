@@ -29,7 +29,7 @@
       "@services/*": ["./src/app/_services/*"],
       "@stores/*": ["./src/app/_stores/*"],
       "@styles/*" : ["./src/app/_styles/*"],
-      "@types/*": ["./src/app/_types/*"],
+      "@customTypes/*": ["./src/app/_types/*"],
       "@utils/*": ["./src/app/_utils/*"]
     }
   },

@@ -4,11 +4,15 @@ import BtnInput from '@assets/btn/btn_input.svg';
 import { cls } from '@utils/util';
 import SaveBtn from '@components/molecules/SaveBtn';
 import FloorIPSetting from '@components/organisms/FloorIPSetting';
+import { useState } from 'react';
+import RightArrowBtn from '@components/molecules/RightArrowBtn';
+import LeftArrowBtn from '@components/molecules/LeftArrowBtn';
 
 export interface DefaultSettingState {
   [key: string]: string;
 }
 const AdminPage = () => {
+  const [curPage, setCurPage] = useState<number>(0);
   const { register, handleSubmit, watch } = useForm<DefaultSettingState>();
 
   const defaultSettingState = [
@@ -19,12 +23,28 @@ const AdminPage = () => {
     { title: '층 수', type: 'floor' }
   ];
 
+  const floorPages: number[][] = [];
+  const pageNation = () => {
+    const floorNum = Number(watch('floor'));
+    if (floorNum <= 4) floorPages.push(Array.from({ length: floorNum }, (_, i) => i + 1));
+    else {
+      for (let i = 0; i < floorNum / 4 - 1; i++) {
+        floorPages.push(Array.from({ length: 4 }, (_, idx) => idx + 1 + i * 4));
+      }
+
+      floorPages.push(
+        Array.from({ length: floorNum % 4 }, (_, idx) => idx + 1 + Math.floor(floorNum / 4) * 4)
+      );
+    }
+  };
+  pageNation();
+
   const isDisabled = (): boolean =>
     !!(watch('gateway') && watch('dns') && watch('startIP') && watch('endIP') && watch('floor'));
 
   const onSubmit = (data: DefaultSettingState) => {
     isDisabled();
-    console.log(data);
+    console.log('data', data);
   };
   return (
     <section className="w-full h-screen flex justify-center items-center">
@@ -57,9 +77,15 @@ const AdminPage = () => {
             })}
           </article>
 
-          <div className="w-full">
-            {watch('floor') && FloorIPSetting({ floorNum: Number(watch('floor')), register })}
-          </div>
+          <article className="w-full flex">
+            {Number(watch('floor')) > 4 && curPage > 0 && (
+              <LeftArrowBtn className="pb-[72px]" onClick={() => setCurPage(curPage - 1)} />
+            )}
+            {watch('floor') && FloorIPSetting({ page: floorPages[curPage], register })}
+            {Number(watch('floor')) > 4 && curPage < Math.ceil(Number(watch('floor')) / 4) - 1 && (
+              <RightArrowBtn className="pb-[72px]" onClick={() => setCurPage(curPage + 1)} />
+            )}
+          </article>
 
           <div className="flex justify-end">
             <SaveBtn disabled={isDisabled()} />
