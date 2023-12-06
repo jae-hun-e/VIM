@@ -1,6 +1,5 @@
 'use client';
 import { useForm } from 'react-hook-form';
-import BtnInput from '@assets/btn/btn_input.svg';
 import { cls } from '@utils/util';
 import SaveBtn from '@components/molecules/SaveBtn';
 import FloorIPSetting from '@components/organisms/FloorIPSetting';
@@ -50,7 +49,7 @@ const AdminPage = () => {
     console.log('data', data);
   };
   return (
-    <section className="w-full h-screen flex justify-center items-center">
+    <div className="w-full h-full flex justify-center items-center">
       <article className="rounded-2xl bg-white shadow-2xl p-[32px]">
         <h3 className="text-main font-bold text-[24px] mb-[24px]"> 비비아이피병원</h3>
         <form onSubmit={handleSubmit(onSubmit)} className="relative">
@@ -90,12 +89,8 @@ const AdminPage = () => {
           </div>
         </form>
       </article>
-      {
-        isDisabled ? (
-          <FailModel isShow={isDisabled} handleClose={() => setIsDisabled(false)} />
-        ) : null //기계역할
-      }
-    </section>
+      {isDisabled ? <FailModel handleClose={() => setIsDisabled(false)} /> : null}
+    </div>
   );
 };
 export default AdminPage;

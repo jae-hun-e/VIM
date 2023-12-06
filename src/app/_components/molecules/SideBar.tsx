@@ -19,7 +19,7 @@ const SideBar = () => {
   };
 
   return (
-    <section className="flex flex-col min-w-[244px] h-screen bg-default">
+    <section className="flex flex-col min-w-[244px] h-screen min-h-[1080px]  bg-default">
       <h1 className="text-[24px] font-bold my-[40px] ml-[24px] text-white">비비아이피병원</h1>
       <nav className="flex flex-col text-gray-4">
         {navList.map((nav) => (

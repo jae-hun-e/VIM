@@ -8,7 +8,7 @@ const RegisterHeader = ({ onClickTag, onSelectTag }: IRegisterHeader) => {
   return (
     <div className="flex justify-between w-full px-10 pt-2 fixed">
       <button onClick={() => onClickTag('')} className="w-[44px] h-[29px]">
-        <p className="text-[#1b5391] [font-family:'Inter-Bold',Helvetica] font-bold text-[24px] tracking-[-1.68px] leading-[normal]">
+        <p className="text-[#1b5391] [font-family:'Inter-Bold',Helvetica] font-bold text-[24px]">
           AIM
         </p>
       </button>
