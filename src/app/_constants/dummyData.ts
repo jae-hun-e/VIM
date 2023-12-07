@@ -36,21 +36,21 @@ export const statusIP = [
       { ip: '192.172.10.29', type: 'computer' },
       { ip: '192.172.10.30', type: 'computer' },
       { ip: '192.172.10.31', type: 'else' },
-      { ip: '192.172.10.20', type: 'computer' },
-      { ip: '192.172.10.21', type: 'computer' },
-      { ip: '192.172.10.22', type: 'else' },
-      { ip: '192.172.10.20', type: 'computer' },
-      { ip: '192.172.10.21', type: 'computer' },
-      { ip: '192.172.10.22', type: 'else' },
-      { ip: '192.172.10.20', type: 'computer' },
-      { ip: '192.172.10.21', type: 'computer' },
-      { ip: '192.172.10.22', type: 'else' },
-      { ip: '192.172.10.20', type: 'computer' },
-      { ip: '192.172.10.21', type: 'computer' },
-      { ip: '192.172.10.22', type: 'else' },
-      { ip: '192.172.10.20', type: 'computer' },
-      { ip: '192.172.10.21', type: 'computer' },
-      { ip: '192.172.10.22', type: 'else' }
+      { ip: '192.172.10.40', type: 'computer' },
+      { ip: '192.172.10.41', type: 'computer' },
+      { ip: '192.172.10.42', type: 'else' },
+      { ip: '192.172.10.43', type: 'computer' },
+      { ip: '192.172.10.44', type: 'computer' },
+      { ip: '192.172.10.45', type: 'else' },
+      { ip: '192.172.10.46', type: 'computer' },
+      { ip: '192.172.10.47', type: 'computer' },
+      { ip: '192.172.10.48', type: 'else' },
+      { ip: '192.172.10.49', type: 'computer' },
+      { ip: '192.172.10.51', type: 'computer' },
+      { ip: '192.172.10.52', type: 'else' },
+      { ip: '192.172.10.50', type: 'computer' },
+      { ip: '192.172.10.53', type: 'computer' },
+      { ip: '192.172.10.54', type: 'else' }
     ]
   }
 ];
@@ -94,7 +94,7 @@ export const floorIP = [
     key: '3',
     addressList: [
       {
-        ipAddress: '192.168.1.3',
+        ipAddress: '192.168.1.4',
         macAddress: 'hello3',
         name: '민준수',
         floor: 4,
@@ -107,7 +107,7 @@ export const floorIP = [
     key: '4',
     addressList: [
       {
-        ipAddress: '192.168.1.1',
+        ipAddress: '192.168.1.5',
         macAddress: 'hello',
         name: '유아영',
         floor: 3,
@@ -115,7 +115,7 @@ export const floorIP = [
         isComputer: false
       },
       {
-        ipAddress: '192.168.1.2',
+        ipAddress: '192.168.1.6',
         macAddress: 'hello2',
         name: '김민재',
         floor: 4,
@@ -123,7 +123,7 @@ export const floorIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.1',
+        ipAddress: '192.168.1.7',
         macAddress: 'hello',
         name: '유아영',
         floor: 3,
@@ -131,7 +131,7 @@ export const floorIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.2',
+        ipAddress: '192.168.1.8',
         macAddress: 'hello2',
         name: '김민재',
         floor: 4,
@@ -139,7 +139,7 @@ export const floorIP = [
         isComputer: false
       },
       {
-        ipAddress: '192.168.1.1',
+        ipAddress: '192.168.1.9',
         macAddress: 'hello',
         name: '유아영',
         floor: 3,
@@ -147,7 +147,7 @@ export const floorIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.2',
+        ipAddress: '192.168.1.12',
         macAddress: 'hello2',
         name: '김민재',
         floor: 4,
@@ -155,7 +155,7 @@ export const floorIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.1',
+        ipAddress: '192.168.1.11',
         macAddress: 'hello',
         name: '유아영',
         floor: 3,
@@ -163,7 +163,7 @@ export const floorIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.2',
+        ipAddress: '192.168.1.22',
         macAddress: 'hello2',
         name: '김민재',
         floor: 4,
@@ -171,7 +171,7 @@ export const floorIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.1',
+        ipAddress: '192.168.1.21',
         macAddress: 'hello',
         name: '유아영',
         floor: 3,
@@ -179,7 +179,7 @@ export const floorIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.2',
+        ipAddress: '192.168.1.32',
         macAddress: 'hello2',
         name: '김민재',
         floor: 4,
@@ -187,7 +187,7 @@ export const floorIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.1',
+        ipAddress: '192.168.1.31',
         macAddress: 'hello',
         name: '유아영',
         floor: 3,
@@ -195,7 +195,7 @@ export const floorIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.2',
+        ipAddress: '192.168.1.42',
         macAddress: 'hello2',
         name: '김민재',
         floor: 4,
@@ -208,7 +208,7 @@ export const floorIP = [
     key: '5',
     addressList: [
       {
-        ipAddress: '192.168.1.3',
+        ipAddress: '192.168.1.43',
         macAddress: 'hello3',
         name: '민준수',
         floor: 4,
@@ -258,7 +258,7 @@ export const deptIP = [
     key: '유도부',
     addressList: [
       {
-        ipAddress: '192.168.1.3',
+        ipAddress: '192.168.1.13',
         macAddress: 'hello3',
         name: '민준수',
         floor: 4,
@@ -271,7 +271,7 @@ export const deptIP = [
     key: '검도부',
     addressList: [
       {
-        ipAddress: '192.168.1.1',
+        ipAddress: '192.168.1.11',
         macAddress: 'hello',
         name: '유아영',
         floor: 3,
@@ -279,7 +279,7 @@ export const deptIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.2',
+        ipAddress: '192.168.1.12',
         macAddress: 'hello2',
         name: '김민재',
         floor: 4,
@@ -292,7 +292,7 @@ export const deptIP = [
     key: '유도부',
     addressList: [
       {
-        ipAddress: '192.168.1.3',
+        ipAddress: '192.168.1.23',
         macAddress: 'hello3',
         name: '민준수',
         floor: 4,
@@ -305,7 +305,7 @@ export const deptIP = [
     key: '검도부',
     addressList: [
       {
-        ipAddress: '192.168.1.1',
+        ipAddress: '192.168.1.21',
         macAddress: 'hello',
         name: '유아영',
         floor: 3,
@@ -313,7 +313,7 @@ export const deptIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.2',
+        ipAddress: '192.168.1.22',
         macAddress: 'hello2',
         name: '김민재',
         floor: 4,
@@ -321,7 +321,7 @@ export const deptIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.1',
+        ipAddress: '192.168.1.31',
         macAddress: 'hello',
         name: '유아영',
         floor: 3,
@@ -329,7 +329,7 @@ export const deptIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.2',
+        ipAddress: '192.168.1.32',
         macAddress: 'hello2',
         name: '김민재',
         floor: 4,
@@ -337,7 +337,7 @@ export const deptIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.1',
+        ipAddress: '192.168.1.41',
         macAddress: 'hello',
         name: '유아영',
         floor: 3,
@@ -345,7 +345,7 @@ export const deptIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.2',
+        ipAddress: '192.168.1.42',
         macAddress: 'hello2',
         name: '김민재',
         floor: 4,
@@ -353,7 +353,7 @@ export const deptIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.1',
+        ipAddress: '192.168.1.51',
         macAddress: 'hello',
         name: '유아영',
         floor: 3,
@@ -361,7 +361,7 @@ export const deptIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.2',
+        ipAddress: '192.168.1.52',
         macAddress: 'hello2',
         name: '김민재',
         floor: 4,
@@ -369,7 +369,7 @@ export const deptIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.1',
+        ipAddress: '192.168.1.61',
         macAddress: 'hello',
         name: '유아영',
         floor: 3,
@@ -377,7 +377,7 @@ export const deptIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.2',
+        ipAddress: '192.168.1.62',
         macAddress: 'hello2',
         name: '김민재',
         floor: 4,
@@ -385,7 +385,7 @@ export const deptIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.1',
+        ipAddress: '192.168.1.71',
         macAddress: 'hello',
         name: '유아영',
         floor: 3,
@@ -393,7 +393,7 @@ export const deptIP = [
         isComputer: true
       },
       {
-        ipAddress: '192.168.1.2',
+        ipAddress: '192.168.1.72',
         macAddress: 'hello2',
         name: '김민재',
         floor: 4,
@@ -422,7 +422,7 @@ export const reqSearch = [
     isComputer: false
   },
   {
-    ipAddress: '192.168.1.2',
+    ipAddress: '192.168.1.12',
     macAddress: 'hello2',
     name: '김민재',
     floor: 4,
@@ -430,7 +430,7 @@ export const reqSearch = [
     isComputer: true
   },
   {
-    ipAddress: '192.168.1.4',
+    ipAddress: '192.168.1.14',
     macAddress: 'hello4',
     name: '김민재',
     floor: 2,
@@ -438,7 +438,7 @@ export const reqSearch = [
     isComputer: false
   },
   {
-    ipAddress: '192.168.1.2',
+    ipAddress: '192.168.1.22',
     macAddress: 'hello2',
     name: '김민재',
     floor: 4,
@@ -446,7 +446,7 @@ export const reqSearch = [
     isComputer: true
   },
   {
-    ipAddress: '192.168.1.4',
+    ipAddress: '192.168.1.24',
     macAddress: 'hello4',
     name: '김민재',
     floor: 2,
@@ -454,7 +454,7 @@ export const reqSearch = [
     isComputer: false
   },
   {
-    ipAddress: '192.168.1.2',
+    ipAddress: '192.168.1.32',
     macAddress: 'hello2',
     name: '김민재',
     floor: 4,
@@ -462,7 +462,7 @@ export const reqSearch = [
     isComputer: true
   },
   {
-    ipAddress: '192.168.1.4',
+    ipAddress: '192.168.1.34',
     macAddress: 'hello4',
     name: '김민재',
     floor: 2,

@@ -7,7 +7,7 @@ interface FailModelProps {
 const FailModel = ({ handleClose }: FailModelProps) => {
   return (
     <Model className="w-[400px] h-[200px]">
-      <h1 className="text-2xl font-bold">test</h1>
+      <p className="text-2xl font-bold">test</p>
       <OkBtn onClick={handleClose} />
     </Model>
   );

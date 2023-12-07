@@ -10,3 +10,8 @@ export interface AtomProps {
   className?: string;
   children?: ReactNode;
 }
+
+export enum Layout {
+  flex = 'flex flex-col',
+  grid = 'grid grid-cols-3'
+}

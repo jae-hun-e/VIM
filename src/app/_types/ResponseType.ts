@@ -1,4 +1,4 @@
-export interface SearchPeople {
+export interface ResponsePeople {
   ipAddress: string;
   macAddress: string;
   name: string;

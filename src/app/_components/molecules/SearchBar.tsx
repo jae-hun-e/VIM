@@ -8,7 +8,7 @@ interface SearchPeople {
 
 const SearchBar = () => {
   const { register, handleSubmit, reset } = useForm();
-  const handleSearchPeople = ({ people }: SearchPeople) => {
+  const handleSubmitSearch = ({ people }: SearchPeople) => {
     console.log('test', people);
     reset({ people: '' });
   };
@@ -16,7 +16,7 @@ const SearchBar = () => {
   return (
     <form
       className="sticky top-0 w-full pt-[32px] mb-[20px] bg-white "
-      onSubmit={handleSubmit(handleSearchPeople)}>
+      onSubmit={handleSubmit(handleSubmitSearch)}>
       <input
         type="text"
         placeholder="사원을 검색해 주세요."
