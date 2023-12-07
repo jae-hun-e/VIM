@@ -10,3 +10,8 @@ export const SelectedPeople = atom<ResponsePeople | null>({
   key: 'SelectedPeople',
   default: null
 });
+
+export const currentPath = atom<string>({
+  key: 'currentPath',
+  default: ''
+});
