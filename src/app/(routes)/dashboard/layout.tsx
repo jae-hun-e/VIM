@@ -7,7 +7,7 @@ const DashBoardLayout = ({ children }: { children: ReactNode }) => {
     <RecoilRootProvider>
       <div className="flex bg-gray-2">
         <SideBar />
-        <div className="ml-[40px] mt-[56px] mb-[40px] w-full box-border flex justify-start items-center">
+        <div className="mx-[40px] mt-[56px] mb-[40px] w-full box-border flex justify-start items-center">
           {children}
         </div>
       </div>

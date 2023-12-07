@@ -1,11 +1,7 @@
-import { ReactNode } from 'react';
 import { cls } from '@utils/util';
+import { AtomProps } from '@/app/_types/commendTypes';
 
-interface BoxProps {
-  className?: string;
-  children?: ReactNode;
-}
-const Box = ({ className = '', children }: BoxProps) => {
+const Box = ({ className = '', children }: AtomProps) => {
   return <article className={cls(className, 'rounded-xl p-[32px] bg-white')}>{children}</article>;
 };
 
