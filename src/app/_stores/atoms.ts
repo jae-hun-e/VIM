@@ -6,9 +6,22 @@ export const isIpSetup = atom<boolean>({
   default: false
 });
 
-export const SelectedPeople = atom<ResponsePeople | null>({
-  key: 'SelectedPeople',
+interface SelectedProps {
+  idx: number;
+  info: ResponsePeople | null;
+}
+
+export const searchList = atom<SelectedProps[] | null>({
+  key: 'searchList',
   default: null
+});
+
+export const selectedPeople = atom<SelectedProps>({
+  key: 'selectedPeople',
+  default: {
+    idx: 0,
+    info: null
+  }
 });
 
 export const currentPath = atom<string>({
