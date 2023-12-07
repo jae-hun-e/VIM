@@ -1,8 +1,17 @@
 import { cls } from '@utils/util';
 import { AtomProps } from '@/app/_types/commendTypes';
 
-const Box = ({ className = '', children }: AtomProps) => {
-  return <article className={cls(className, 'rounded-xl p-[32px] bg-white')}>{children}</article>;
+interface BoxProps extends AtomProps {
+  onClick?: () => void;
+}
+const Box = ({ className = '', children, onClick }: BoxProps) => {
+  return (
+    <article
+      className={cls(className, 'rounded-xl p-[32px] bg-white overflow-auto custom-scroll')}
+      onClick={onClick}>
+      {children}
+    </article>
+  );
 };
 
 export default Box;

@@ -10,8 +10,8 @@ const RemainIP = () => {
         <BackBtn onBackHref={routerHref.allocationIP} />
         <p className="text-[24px]">잔여 IP</p>
       </header>
-      <section>
-        {remainIP.reverse().map(({ floor, ipArr }) => {
+      <div>
+        {[...remainIP].reverse().map(({ floor, ipArr }) => {
           return (
             <div key={floor} className="mb-[20px]">
               <p className="text-[20px] mb-[16px]">{floor}층</p>
@@ -23,7 +23,7 @@ const RemainIP = () => {
             </div>
           );
         })}
-      </section>
+      </div>
     </Box>
   );
 };

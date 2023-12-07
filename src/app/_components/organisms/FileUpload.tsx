@@ -6,7 +6,7 @@ import { routerHref } from '@constants/navList';
 
 const FileUpload = () => {
   return (
-    <Box className="w-[788px] h-[984px] max-h-[984px]">
+    <Box className="w-[788px] ">
       <div className="flex justify-between items-center">
         <p className="text-[24px]">파일 업로드</p>
         <Link href={routerHref.remainIP} className="text-gray-4">

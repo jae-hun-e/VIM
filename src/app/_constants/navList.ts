@@ -20,3 +20,8 @@ export const infoIP = [
   { id: 4, title: '층 수', value: 'floor' },
   { id: 5, title: '부서 명', value: 'department' }
 ];
+
+export const statusTabList = [
+  { id: 1, koTitle: '층별', title: 'floor' },
+  { id: 2, koTitle: '부서별', title: 'department' }
+];

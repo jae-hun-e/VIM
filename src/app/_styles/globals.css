@@ -35,6 +35,19 @@
     -webkit-appearance: none;
     margin: 0;
 }
+
+.custom-scroll::-webkit-scrollbar{
+    display: block;
+    background:var(--gray-3);
+    width: 14px;
+    border-radius: 0px 8px 8px 0px;
+}
+.custom-scroll::-webkit-scrollbar-thumb{
+    background: var(--main);
+    border-radius: 8px;
+}
+
+
 body {
   /*color: rgb(var(--foreground-rgb));*/
   /*background: linear-gradient(*/
@@ -43,5 +56,5 @@ body {
   /*    rgb(var(--background-end-rgb))*/
   /*  )*/
   /*  rgb(var(--background-start-rgb));*/
-    font-family:'Roboto-Regular',Helvetica
+    font-family: 'Roboto-Regular', Helvetica
 }

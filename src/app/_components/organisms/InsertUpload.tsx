@@ -9,7 +9,7 @@ import { cls } from '@utils/util';
 const InsertUpload = () => {
   const { register, handleSubmit, watch, setError } = useForm();
   return (
-    <Box className="w-[485px] h-[984px]">
+    <Box className="w-[485px]">
       <div className="flex justify-between items-center">
         <p className="text-[24px]">정보 기입</p>
         <Link href={routerHref.remainIP} className="text-gray-4">
