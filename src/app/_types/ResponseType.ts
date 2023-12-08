@@ -6,3 +6,8 @@ export interface ResponsePeople {
   department: string;
   isComputer: boolean;
 }
+
+export interface RemainIP {
+  floor: number;
+  ipArr: string[];
+}
