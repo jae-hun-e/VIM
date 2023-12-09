@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ClientError, ServerError } from '@services/common/customError';
+import { ServerError } from '@services/common/customError';
 
 export const client = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL
@@ -22,9 +22,9 @@ client.interceptors.response.use(
     const data = error.response.data;
 
     if (ERROR_CODE.includes(data.code)) {
-      throw new ClientError(data.message);
+      // throw ClientError(data.message)
+      throw error;
     }
-
     throw new ServerError(data.message);
   }
 );

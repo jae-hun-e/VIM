@@ -7,6 +7,7 @@ import { cls } from '@utils/util';
 import { useMutation } from '@tanstack/react-query';
 import { postLogin } from '@services/post/postFormData';
 import { LoginFormProps } from '@/app/_types/reqestType';
+import { AxiosError } from 'axios';
 
 const Login = () => {
   const {
@@ -18,47 +19,36 @@ const Login = () => {
     watch
   } = useForm<LoginFormProps>();
   const router = useRouter();
-  const { mutate, isError, error } = useMutation({ mutationFn: postLogin });
-  const onSubmit = (data: LoginFormProps) => {
-    if (!data.username) {
-      setFocus('username');
-      setError('username', { type: 'custom', message: 'username를 입력해주세요.' });
-      return;
-    }
-
-    if (!data.password) {
-      setFocus('password');
-      setError('password', { type: 'custom', message: 'password를 입력해주세요.' });
-      return;
-    }
-
-    console.log('error', isError, error);
-    mutate(data, {
-      onSuccess: () => router.push('/dashboard/admin'),
-      onError: (error) => {
+  const { mutate } = useMutation({
+    mutationFn: postLogin,
+    onSuccess: () => {
+      router.push('/dashboard/admin');
+    },
+    onError: (error) => {
+      if (error instanceof AxiosError) {
+        // Todo id, passward 틀린값 setError추가
         console.log(error);
-        // console.log('error msg', error);
+      } else {
+        alert('server error :(');
       }
-    });
-
-    // isSuccess && router.push('/dashboard/admin');
-  };
+    }
+  });
 
   const onLogin = () => !!(watch('username') && watch('password'));
 
   return (
     <article className="flex flex-col items-center justify-center text-black w-[961px] h-[685px] rounded-[48px] bg-white shadow-lg">
       <AIM width="145px" height="97px" />
-      <form className="flex flex-col gap-[8px] " onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit((data) => mutate(data))} className="flex flex-col gap-[8px]">
         <label htmlFor="username">ID</label>
         <input
           id="username"
           type="text"
           placeholder="id를 입력해주세요"
-          {...register('username', { required: true })}
+          {...register('username')}
           className={cls(
-            errors?.username ? 'border-[1px] border-red-500 bg-fail-2' : '',
-            'w-[521px] h-[51px] bg-gray-2 rounded-[24px] px-[20px]'
+            'w-[521px] h-[51px] rounded-[24px] px-[20px]',
+            errors?.username ? 'border-[1px] border-red-500 bg-fail-2' : 'bg-gray-2'
           )}
         />
         <label htmlFor="password">Password</label>
@@ -68,8 +58,8 @@ const Login = () => {
           placeholder="비밀번호를 입력해주세요"
           {...register('password')}
           className={cls(
-            errors?.password ? 'border-[1px] border-red-500 bg-fail-2' : '',
-            'w-[521px] h-[51px] bg-gray-2 rounded-[24px] px-[20px]'
+            'w-[521px] h-[51px] rounded-[24px] px-[20px]',
+            errors?.password ? 'border-[1px] border-red-500 bg-fail-2' : 'bg-gray-2'
           )}
         />
 
