@@ -7,7 +7,14 @@ export interface ResponsePeople {
   isComputer: boolean;
 }
 
-export interface RemainIP {
+export interface ResponseRemainIP {
   floor: number;
   ipArr: string[];
+}
+
+export interface ResponseLogin {
+  isSuccess: boolean;
+  code: number;
+  message: string;
+  data: object;
 }

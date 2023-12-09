@@ -4,10 +4,10 @@ import AIM from '@assets/logo/Icon_AIM.svg';
 import LoginIcon from '@assets/btn/btn_login.svg';
 import LoginOffIcon from '@assets/btn/btn_login_off.svg';
 import { cls } from '@utils/util';
-interface IForm {
-  id: string;
-  pw: string;
-}
+import { useMutation } from '@tanstack/react-query';
+import { postLogin } from '@services/post/postFormData';
+import { LoginFormProps } from '@/app/_types/reqestType';
+
 const Login = () => {
   const {
     register,
@@ -16,62 +16,59 @@ const Login = () => {
     setError,
     formState: { errors },
     watch
-  } = useForm<IForm>();
+  } = useForm<LoginFormProps>();
   const router = useRouter();
-  const onSubmit = (data: IForm) => {
-    if (!data.id) {
-      setFocus('id');
-      setError('id', { type: 'custom', message: 'id를 입력해주세요.' });
-
+  const { mutate, isError, error } = useMutation({ mutationFn: postLogin });
+  const onSubmit = (data: LoginFormProps) => {
+    if (!data.username) {
+      setFocus('username');
+      setError('username', { type: 'custom', message: 'username를 입력해주세요.' });
       return;
     }
 
-    if (!data.pw) {
-      setFocus('pw');
-      setError('pw', { type: 'custom', message: 'pw를 입력해주세요.' });
+    if (!data.password) {
+      setFocus('password');
+      setError('password', { type: 'custom', message: 'password를 입력해주세요.' });
       return;
     }
 
-    if (data.id !== 'admin') {
-      setFocus('id');
-      setError('id', { type: 'custom', message: 'id가 잘못되었습니다.' });
-      return;
-    }
+    console.log('error', isError, error);
+    mutate(data, {
+      onSuccess: () => router.push('/dashboard/admin'),
+      onError: (error) => {
+        console.log(error);
+        // console.log('error msg', error);
+      }
+    });
 
-    if (data.pw !== '1234') {
-      setFocus('pw');
-      setError('pw', { type: 'custom', message: 'pw가 잘못되었습니다.' });
-      return;
-    }
-
-    router.push('/dashboard/admin');
+    // isSuccess && router.push('/dashboard/admin');
   };
 
-  const onLogin = () => !!(watch('id') && watch('pw'));
+  const onLogin = () => !!(watch('username') && watch('password'));
 
   return (
     <article className="flex flex-col items-center justify-center text-black w-[961px] h-[685px] rounded-[48px] bg-white shadow-lg">
       <AIM width="145px" height="97px" />
       <form className="flex flex-col gap-[8px] " onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="id">ID</label>
+        <label htmlFor="username">ID</label>
         <input
-          id="id"
+          id="username"
           type="text"
           placeholder="id를 입력해주세요"
-          {...register('id', { required: true })}
+          {...register('username', { required: true })}
           className={cls(
-            errors?.id ? 'border-[1px] border-red-500 bg-fail-2' : '',
+            errors?.username ? 'border-[1px] border-red-500 bg-fail-2' : '',
             'w-[521px] h-[51px] bg-gray-2 rounded-[24px] px-[20px]'
           )}
         />
-        <label htmlFor="pw">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           id="pw"
           type="password"
           placeholder="비밀번호를 입력해주세요"
-          {...register('pw')}
+          {...register('password')}
           className={cls(
-            errors?.pw ? 'border-[1px] border-red-500 bg-fail-2' : '',
+            errors?.password ? 'border-[1px] border-red-500 bg-fail-2' : '',
             'w-[521px] h-[51px] bg-gray-2 rounded-[24px] px-[20px]'
           )}
         />
@@ -80,7 +77,7 @@ const Login = () => {
           {onLogin() ? <LoginIcon /> : <LoginOffIcon />}
         </button>
 
-        {errors?.id?.message || errors?.pw?.message}
+        {errors?.username?.message || errors?.password?.message}
       </form>
     </article>
   );

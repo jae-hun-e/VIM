@@ -1,16 +1,12 @@
 'use client';
-import Box from '@components/atoms/Box';
-import BackBtn from '@components/molecules/BackBtn';
-import { routerHref } from '@constants/navList';
-import { DremainIP } from '@constants/dummyData';
 import { useQuery } from '@tanstack/react-query';
 
-import { getRemainIP } from '@services/get/getRemainIP';
+import { getResponse } from '@services/get/getResponse';
 
 const RemainIP = () => {
   const { isError, data, error } = useQuery({
-    queryKey: [getRemainIP],
-    queryFn: getRemainIP
+    queryKey: [getResponse],
+    queryFn: getResponse
   });
 
   if (isError) throw error;
