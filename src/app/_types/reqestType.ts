@@ -18,3 +18,8 @@ export interface InsertUploadProps {
   floor: string;
   department: string;
 }
+
+export interface SearchProps {
+  keyword: string;
+  value: string;
+}

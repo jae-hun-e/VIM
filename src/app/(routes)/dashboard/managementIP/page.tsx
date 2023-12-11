@@ -1,5 +1,5 @@
 'use client';
-import SearchBar from '@components/molecules/SearchBar';
+import SearchBar from '@components/organisms/SearchBar';
 import Box from '@components/atoms/Box';
 import SearchList from '@components/molecules/SearchList';
 import { reqSearch } from '@constants/dummyData';

@@ -7,16 +7,15 @@ export const isDefaultSetup = atom<boolean>({
   default: true
 });
 
-interface SelectedProps {
-  idx: number;
-  info: ResponsePeople | null;
-}
-
-export const searchList = atom<SelectedProps[] | null>({
+export const searchList = atom<ResponsePeople[] | null>({
   key: 'searchList',
   default: null
 });
 
+interface SelectedProps {
+  idx: number;
+  info: ResponsePeople | null;
+}
 export const selectedPeople = atom<SelectedProps>({
   key: 'selectedPeople',
   default: {

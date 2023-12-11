@@ -45,3 +45,9 @@ export const statusTabList = [
   { id: 1, koTitle: '층별', title: 'floor' },
   { id: 2, koTitle: '부서별', title: 'department' }
 ];
+
+export const dropBoxList = [
+  { id: 1, name: '이름', type: 'name' },
+  { id: 2, name: 'IP', type: 'ip' },
+  { id: 3, name: 'MAC', type: 'mac' }
+];
