@@ -6,7 +6,7 @@ interface SaveBtnProps extends BtnProps {
 }
 const SaveBtn = ({ className, onClick, disabled }: SaveBtnProps) => {
   return (
-    <button className={className} type="submit" onClick={onClick}>
+    <button className={className} type="button" onClick={onClick}>
       {disabled ? <BtnSave /> : <BtnSaveOff />}
     </button>
   );

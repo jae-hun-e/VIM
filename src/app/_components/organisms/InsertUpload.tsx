@@ -51,7 +51,7 @@ const InsertUpload = () => {
         </Link>
       </div>
       <p className="text-[20px] text-gray-4 mt-[16px] mb-[40px]">정보를 입력해주세요</p>
-      <form className="flex flex-col gap-[16px]" onSubmit={handleSubmit(handleInsertUpload)}>
+      <form className="flex flex-col gap-[16px]">
         {infoIP.map(({ id, title, type }) => {
           return (
             <div key={id} className="flex ">
@@ -72,7 +72,7 @@ const InsertUpload = () => {
           );
         })}
         <div className="flex justify-end mt-[16px]">
-          <SaveBtn disabled={onSaveBtn()} />
+          <SaveBtn disabled={onSaveBtn()} onClick={handleSubmit(handleInsertUpload)} />
         </div>
       </form>
     </Box>

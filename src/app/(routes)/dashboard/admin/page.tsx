@@ -43,7 +43,7 @@ const AdminPage = () => {
     return true;
   };
 
-  const onSubmit = (data: DefaultSettingState) => {
+  const handleSubmitAdminConfig = (data: DefaultSettingState) => {
     setIsSetup(true);
 
     const req = { keys: [] } as AdminConfig;
@@ -56,7 +56,7 @@ const AdminPage = () => {
     // mutate(req);
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="relative">
+    <form className="relative">
       <article className="flex flex-col gap-4 mb-[32px]">
         {defaultSettingState.map(({ title, type }) => {
           return (
@@ -95,7 +95,7 @@ const AdminPage = () => {
         {isSetup ? (
           <EditBtn onClick={() => setIsSetup(!isSetup)} />
         ) : (
-          <SaveBtn disabled={onSaveBtn()} />
+          <SaveBtn disabled={onSaveBtn()} onClick={handleSubmit(handleSubmitAdminConfig)} />
         )}
       </div>
     </form>
