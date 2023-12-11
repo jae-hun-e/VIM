@@ -13,6 +13,7 @@ import EditBtn from '@components/molecules/EditBtn';
 import { getAdminInfo } from '@services/get/getResponse';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { postAdminConfig } from '@services/post/postFormData';
+import { AdminConfig } from '@/app/_types/reqestType';
 
 export interface DefaultSettingState {
   [key: string]: string;
@@ -26,38 +27,53 @@ const AdminPage = () => {
     mutationFn: postAdminConfig
   });
 
-  const { register, handleSubmit, watch } = useForm<DefaultSettingState>();
+  const { register, handleSubmit, watch, trigger } = useForm<DefaultSettingState>();
 
-  const floorPages: number[][] = pageNation(watch('admin.floor'));
+  const totalFloor = watch('admin_floor');
+  const floorPages: number[][] = pageNation(Number(totalFloor));
 
-  const validatedState = (): boolean =>
-    !!(watch('gateway') && watch('dns') && watch('startIP') && watch('endIP') && watch('floor'));
+  const onSaveBtn = (): boolean => {
+    for (const { type } of defaultSettingState) {
+      if (!watch(type)) return false;
+    }
+    for (let i = 1; i <= Number(totalFloor); i++) {
+      if (!(watch(`floor_end_ip_address_${i}F`) && watch(`floor_start_ip_address_${i}F`)))
+        return false;
+    }
+    return true;
+  };
 
   const onSubmit = (data: DefaultSettingState) => {
-    // todo input값 validation
     setIsSetup(true);
 
-    console.log('data', data);
+    const req = { keys: [] } as AdminConfig;
+    for (const key in data) {
+      req.keys.push({ key, value: data[key] });
+    }
+    console.log(data);
+
+    // todo BE api 변경 후 test
+    // mutate(req);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="relative">
       <article className="flex flex-col gap-4 mb-[32px]">
-        {defaultSettingState.map(({ title, key }) => {
+        {defaultSettingState.map(({ title, type }) => {
           return (
             <div key={title} className="flex gap-[20px]">
-              <label className="font-medium w-[75px]" htmlFor={key}>
+              <label className="font-medium w-[75px]" htmlFor={type}>
                 {title}
               </label>
               <input
                 type="number"
-                id={key}
+                id={type}
                 className={cls(
-                  key === 'admin.floor' ? 'w-[77px]' : 'w-[295px]',
+                  type === 'admin_floor' ? 'w-[77px]' : 'w-[295px]',
                   isSetup ? 'bg-white' : 'bg-gray-2',
                   'h-[36px] bg-gray-2 rounded-[4px] px-[16px] appearance-none'
                 )}
                 disabled={isSetup}
-                {...register(key, { required: true })}
+                {...register(type, { required: true })}
               />
             </div>
           );
@@ -65,12 +81,12 @@ const AdminPage = () => {
       </article>
 
       <article className="w-full flex justify-center">
-        {Number(watch('admin.floor')) > 4 && curPage > 0 && (
+        {Number(watch('admin_floor')) > 4 && curPage > 0 && (
           <LeftArrowBtn className="pb-[72px]" onClick={() => setCurPage(curPage - 1)} />
         )}
-        {watch('admin.floor') && FloorIPSetting({ page: floorPages[curPage], register, isSetup })}
-        {Number(watch('admin.floor')) > 4 &&
-          curPage < Math.ceil(Number(watch('admin.floor')) / 4) - 1 && (
+        {watch('admin_floor') && FloorIPSetting({ page: floorPages[curPage], register, isSetup })}
+        {Number(watch('admin_floor')) > 4 &&
+          curPage < Math.ceil(Number(watch('admin_floor')) / 4) - 1 && (
             <RightArrowBtn className="pb-[72px]" onClick={() => setCurPage(curPage + 1)} />
           )}
       </article>
@@ -79,7 +95,7 @@ const AdminPage = () => {
         {isSetup ? (
           <EditBtn onClick={() => setIsSetup(!isSetup)} />
         ) : (
-          <SaveBtn disabled={validatedState()} />
+          <SaveBtn disabled={onSaveBtn()} />
         )}
       </div>
     </form>

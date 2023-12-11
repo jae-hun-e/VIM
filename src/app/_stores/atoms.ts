@@ -3,7 +3,8 @@ import { ResponsePeople } from '@/app/_types/ResponseType';
 
 export const isDefaultSetup = atom<boolean>({
   key: 'isDefaultSetup',
-  default: false
+  // todo : test용으로
+  default: true
 });
 
 interface SelectedProps {

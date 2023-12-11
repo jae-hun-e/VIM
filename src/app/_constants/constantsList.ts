@@ -16,19 +16,29 @@ export const constantsList = [
 ];
 
 export const defaultSettingState = [
-  { title: 'Gateway', key: 'admin.gateway' },
-  { title: 'DNS', key: 'admin.dns' },
-  { title: '시작 IP', key: 'admin.startIpAddress' },
-  { title: '종료 IP', key: 'admin.endIpAddress' },
-  { title: '층 수', key: 'admin.floor' }
+  { title: 'Gateway', type: 'admin_gateway' },
+  { title: 'DNS', type: 'admin_dns' },
+  { title: '시작 IP', type: 'admin_startIpAddress' },
+  { title: '종료 IP', type: 'admin_endIpAddress' },
+  { title: '층 수', type: 'admin_floor' }
 ];
 
-export const infoIP = [
-  { id: 1, title: 'IP address', value: 'IP' },
-  { id: 2, title: 'MAC address', value: 'MAC' },
-  { id: 3, title: '사원 이름', value: 'people' },
-  { id: 4, title: '층 수', value: 'floor' },
-  { id: 5, title: '부서 명', value: 'department' }
+const types = {
+  ipAddress: 'ipAddress',
+  maxAddress: 'maxAddress',
+  name: 'name',
+  floor: 'floor',
+  department: 'department'
+} as const;
+
+type typeList = (typeof types)[keyof typeof types];
+
+export const infoIP: Array<{ id: number; title: string; type: typeList }> = [
+  { id: 1, title: 'IP address', type: 'ipAddress' },
+  { id: 2, title: 'MAC address', type: 'maxAddress' },
+  { id: 3, title: '사원 이름', type: 'name' },
+  { id: 4, title: '층 수', type: 'floor' },
+  { id: 5, title: '부서 명', type: 'department' }
 ];
 
 export const statusTabList = [
