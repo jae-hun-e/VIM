@@ -2,7 +2,7 @@ import Box from '@components/atoms/Box';
 import UploadBtn from '@components/molecules/UploadBtn';
 import SaveBtn from '@components/molecules/SaveBtn';
 import Link from 'next/link';
-import { routerHref } from '@constants/navList';
+import { routerHref } from '@constants/constantsList';
 
 const FileUpload = () => {
   return (

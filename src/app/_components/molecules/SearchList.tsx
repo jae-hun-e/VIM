@@ -1,12 +1,11 @@
 'use client';
 import Box from '@components/atoms/Box';
 import { cls } from '@utils/util';
-import { useState } from 'react';
 import { ResponsePeople } from '@/app/_types/ResponseType';
 import { Layout } from '@/app/_types/commendTypes';
 import Link from 'next/link';
-import { routerHref } from '@constants/navList';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { routerHref } from '@constants/constantsList';
+import { useRecoilState } from 'recoil';
 import { selectedPeople } from '@stores/atoms';
 
 interface SearchListProps {

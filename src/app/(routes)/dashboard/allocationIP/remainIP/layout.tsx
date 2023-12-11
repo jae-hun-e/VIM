@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import Box from '@components/atoms/Box';
 import BackBtn from '@components/molecules/BackBtn';
-import { routerHref } from '@constants/navList';
+import { routerHref } from '@constants/constantsList';
 
 const RemainIPLayout = ({ children }: { children: ReactNode }) => {
   return (

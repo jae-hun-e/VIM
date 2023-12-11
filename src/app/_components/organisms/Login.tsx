@@ -8,28 +8,36 @@ import { useMutation } from '@tanstack/react-query';
 import { postLogin } from '@services/post/postFormData';
 import { LoginFormProps } from '@/app/_types/reqestType';
 import { AxiosError } from 'axios';
+import { ResponseType, ResponseLogin } from '@/app/_types/ResponseType';
 
 const Login = () => {
   const {
     register,
     handleSubmit,
-    setFocus,
     setError,
     formState: { errors },
     watch
   } = useForm<LoginFormProps>();
   const router = useRouter();
-  const { mutate } = useMutation({
+  const { mutate } = useMutation<
+    ResponseType<ResponseLogin>,
+    AxiosError<ResponseType<ResponseLogin>>,
+    LoginFormProps,
+    unknown
+  >({
     mutationFn: postLogin,
     onSuccess: () => {
       router.push('/dashboard/admin');
     },
     onError: (error) => {
-      if (error instanceof AxiosError) {
-        // Todo id, passward 틀린값 setError추가
-        console.log(error);
-      } else {
-        alert('server error :(');
+      const errorsInfo = error.response?.data.errors;
+      if (!errorsInfo) return;
+      for (const { field, message } of errorsInfo) {
+        setError(
+          field === 'username' ? 'username' : 'password',
+          { type: 'custom', message },
+          { shouldFocus: true }
+        );
       }
     }
   });
@@ -67,7 +75,8 @@ const Login = () => {
           {onLogin() ? <LoginIcon /> : <LoginOffIcon />}
         </button>
 
-        {errors?.username?.message || errors?.password?.message}
+        <p>{errors?.username?.message}</p>
+        <p>{errors?.password?.message}</p>
       </form>
     </article>
   );

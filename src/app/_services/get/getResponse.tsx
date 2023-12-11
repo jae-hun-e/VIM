@@ -1,13 +1,15 @@
 import { client } from '@services/common/createAxios';
 import { errorBoundary } from '@services/common/customError';
-import { ResponseRemainIP } from '@/app/_types/ResponseType';
+import { ResponseDefaultSetup, ResponseRemainIP, ResponseType } from '@/app/_types/ResponseType';
 
 export async function getAdminInfo() {
-  return errorBoundary(client.get(`/admin/server-config`));
+  const res = await client.get<ResponseType<ResponseDefaultSetup[]>>(`/admin/config`);
+
+  return res.data;
 }
 
 export async function getResponse() {
-  return errorBoundary<ResponseRemainIP[]>(client.get(`/address/remained`));
+  return errorBoundary<ResponseType<ResponseRemainIP[]>>(client.get(`/address/remained`));
 }
 
 interface AddressProps {

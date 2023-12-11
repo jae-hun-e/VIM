@@ -16,15 +16,15 @@ client.interceptors.request.use(
 );
 
 // 응답 Error handling
-client.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    const data = error.response.data;
-
-    if (ERROR_CODE.includes(data.code)) {
-      // throw ClientError(data.message)
-      throw error;
-    }
-    throw new ServerError(data.message);
-  }
-);
+// client.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     const data = error.response.data;
+//
+//     if (ERROR_CODE.includes(data.code)) {
+//       // throw ClientError(data.message)
+//       throw error;
+//     }
+//     throw new ServerError(data.message);
+//   }
+// );

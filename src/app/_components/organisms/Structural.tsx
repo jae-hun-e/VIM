@@ -1,6 +1,6 @@
 'use client';
 import Box from '@components/atoms/Box';
-import { statusTabList } from '@constants/navList';
+import { statusTabList } from '@constants/constantsList';
 import { cls } from '@utils/util';
 import { useState } from 'react';
 import IPByFloor from '@components/organisms/IPByFloor';

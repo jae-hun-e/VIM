@@ -1,41 +1,45 @@
 'use client';
-import Link from 'next/link';
 import { cls } from '@utils/util';
 import { useRecoilValue } from 'recoil';
-import { isIpSetup } from '@stores/atoms';
+import { isDefaultSetup } from '@stores/atoms';
 import useCheckPath from '@hooks/useCheckPath';
-import { navList } from '@constants/navList';
+import { APP_TITLE, constantsList } from '@constants/constantsList';
+import FailModel from '@components/molecules/FailModel';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const SideBar = () => {
   const [tab, setTab] = useCheckPath();
-  const isSetup = useRecoilValue(isIpSetup);
+  const isSetup = useRecoilValue(isDefaultSetup);
+  const router = useRouter();
+  const [openModel, setOpenModel] = useState<boolean>(false);
 
-  const handleTab = (title: string) => {
-    // if (!isSetup) {
-    //   console.log('정보 넣이 임마');
-    //   return;
-    // }
+  const handleTab = (title: string, href: string) => {
+    if (!isSetup) {
+      setOpenModel(!openModel);
+      return;
+    }
     setTab(title);
+    router.push(href);
   };
 
   return (
     <section className="flex flex-col min-w-[244px] h-screen min-h-[1080px]  bg-default">
-      <h1 className="text-[24px] font-bold my-[40px] ml-[24px] text-white">비비아이피병원</h1>
+      <h1 className="text-[24px] font-bold my-[40px] ml-[24px] text-white">{APP_TITLE}</h1>
       <nav className="flex flex-col text-gray-4">
-        {navList.map((nav) => (
-          <Link
+        {constantsList.map((nav) => (
+          <div
             key={nav.id}
-            href={nav.href}
             className={cls(
-              'h-[63px] pl-[24px] pt-[20px] ',
+              'h-[63px] pl-[24px] pt-[20px] cursor-pointer',
               tab === nav.title ? 'bg-gray-4 text-main font-bold border-r-4 border-main' : ''
             )}
-            style={{ pointerEvents: !isSetup ? 'auto' : 'none' }}
-            onClick={() => handleTab(nav.title)}>
+            onClick={() => handleTab(nav.title, nav.href)}>
             {nav.value}
-          </Link>
+          </div>
         ))}
       </nav>
+      {openModel ? <FailModel handleClose={() => setOpenModel(!openModel)} /> : null}
     </section>
   );
 };

@@ -1,3 +1,5 @@
+export const APP_TITLE = '비비아이피병원';
+
 export const routerHref = {
   admin: '/dashboard/admin',
   allocationIP: '/dashboard/allocationIP',
@@ -6,11 +8,19 @@ export const routerHref = {
   managementIP: '/dashboard/managementIP'
 };
 
-export const navList = [
+export const constantsList = [
   { id: 1, href: routerHref.admin, title: 'admin', value: '관리 페이지' },
   { id: 2, href: routerHref.allocationIP, title: 'allocationIP', value: '할당 IP' },
   { id: 3, href: routerHref.statusIP, title: 'statusIP', value: 'IP 현황' },
   { id: 4, href: routerHref.managementIP, title: 'managementIP', value: 'IP 관리' }
+];
+
+export const defaultSettingState = [
+  { title: 'Gateway', key: 'admin.gateway' },
+  { title: 'DNS', key: 'admin.dns' },
+  { title: '시작 IP', key: 'admin.startIpAddress' },
+  { title: '종료 IP', key: 'admin.endIpAddress' },
+  { title: '층 수', key: 'admin.floor' }
 ];
 
 export const infoIP = [

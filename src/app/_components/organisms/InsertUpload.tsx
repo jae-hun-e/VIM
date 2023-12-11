@@ -2,7 +2,7 @@
 import Box from '@components/atoms/Box';
 import SaveBtn from '@components/molecules/SaveBtn';
 import Link from 'next/link';
-import { infoIP, routerHref } from '@constants/navList';
+import { infoIP, routerHref } from '@constants/constantsList';
 import { useForm } from 'react-hook-form';
 import { cls } from '@utils/util';
 

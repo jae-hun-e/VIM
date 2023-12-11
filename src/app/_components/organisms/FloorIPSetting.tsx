@@ -1,12 +1,14 @@
 import { UseFormRegister } from 'react-hook-form';
 import { DefaultSettingState } from '@/app/(routes)/dashboard/admin/page';
+import { cls } from '@utils/util';
 
 interface FloorIPSettingProps {
   page: number[];
   register: UseFormRegister<DefaultSettingState>;
+  isSetup: boolean;
 }
 
-const FloorIPSetting = ({ page, register }: FloorIPSettingProps) => {
+const FloorIPSetting = ({ page, register, isSetup }: FloorIPSettingProps) => {
   return (
     <div className="flex justify-center gap-[12px] mb-[32px]">
       {page.map((floor) => {
@@ -15,23 +17,26 @@ const FloorIPSetting = ({ page, register }: FloorIPSettingProps) => {
             <div className="flex gap-[8px]">
               <input
                 type="number"
-                className="w-[102px] h-[36px] bg-gray-2 rounded-[4px] px-[16px] appearance-none"
-                {...register(`${floor}F.startIP`, { required: true })}
+                className={cls(
+                  isSetup ? 'bg-white' : 'bg-gray-2',
+                  'w-[102px] h-[36px] rounded-[4px] px-[16px] appearance-none'
+                )}
+                disabled={isSetup}
+                {...register(`floor_start_ip_address_${floor}F`, { required: true })}
                 placeholder="시작IP 입력"
               />
               <input
                 type="number"
-                className="w-[102px] h-[36px] bg-gray-2 rounded-[4px] px-[16px] appearance-none"
-                {...register(`${floor}F.endIP`, { required: true })}
+                className={cls(
+                  isSetup ? 'bg-white' : 'bg-gray-2',
+                  'w-[102px] h-[36px] rounded-[4px] px-[16px] appearance-none'
+                )}
+                disabled={isSetup}
+                {...register(`floor_end_ip_address_${floor}F`, { required: true })}
                 placeholder="종료IP 입력"
               />
             </div>
-            {/*todo 서브넷 없앨 듯*/}
-            <input
-              type="number"
-              className="w-[212px] h-[36px] bg-gray-2 rounded-[4px] px-[16px] appearance-none"
-              {...register(`${floor}F.subnet`, { required: true })}
-            />
+
             <p className="font-medium text-[20px] text-gray-4">{floor}F</p>
           </div>
         );

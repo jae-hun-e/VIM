@@ -1,8 +1,8 @@
 import { atom } from 'recoil';
 import { ResponsePeople } from '@/app/_types/ResponseType';
 
-export const isIpSetup = atom<boolean>({
-  key: 'isIpSetup',
+export const isDefaultSetup = atom<boolean>({
+  key: 'isDefaultSetup',
   default: false
 });
 

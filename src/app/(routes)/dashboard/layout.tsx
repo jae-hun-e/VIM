@@ -1,4 +1,3 @@
-'use client';
 import SideBar from '@components/molecules/SideBar';
 import { ReactNode } from 'react';
 import RecoilRootProvider from '@stores/RecoilRootProvider';
