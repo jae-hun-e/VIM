@@ -13,7 +13,7 @@ export interface ConfigKey {
 
 export interface InsertUploadProps {
   ipAddress: string;
-  maxAddress: string;
+  macAddress: string;
   name: string;
   floor: string;
   department: string;

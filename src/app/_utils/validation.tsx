@@ -1,18 +1,13 @@
-export const validatedIpAddress = (ip: string) => {
-  const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
-  if (ipv4Regex.test(ip)) {
-    const parts = ip.split('.');
-    for (const part of parts) {
-      if (parseInt(part) > 255) {
-        return false;
-      }
-    }
-    return true;
-  }
-  return false;
+export const validatedIpAddress = (ipAddress: string) => {
+  const ipRegex =
+    /^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9]?[0-9])){3}$/;
+  return ipRegex.test(ipAddress);
 };
 
-export const validatedMACAddress = (max: string) => {};
+export const validatedMACAddress = (macAddress: string) => {
+  const macRegex = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/;
+  return macRegex.test(macAddress);
+};
 export const validatedScopeIPAddress = () => {};
 
 // interface FormDataProps{

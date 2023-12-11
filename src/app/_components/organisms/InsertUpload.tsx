@@ -6,10 +6,16 @@ import { infoIP, routerHref } from '@constants/constantsList';
 import { useForm } from 'react-hook-form';
 import { cls } from '@utils/util';
 import { InsertUploadProps } from '@/app/_types/reqestType';
-import { validatedIpAddress } from '@utils/validation';
+import { validatedIpAddress, validatedMACAddress } from '@utils/validation';
 
 const InsertUpload = () => {
-  const { register, handleSubmit, watch, setError } = useForm<InsertUploadProps>();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+    setError
+  } = useForm<InsertUploadProps>();
 
   const handleInsertUpload = (data: InsertUploadProps) => {
     if (!validatedIpAddress(data.ipAddress)) {
@@ -19,10 +25,10 @@ const InsertUpload = () => {
         { shouldFocus: true }
       );
     }
-    if (!validatedIpAddress(data.maxAddress)) {
+    if (!validatedMACAddress(data.macAddress)) {
       setError(
-        'ipAddress',
-        { type: 'custom', message: 'ip주소값이 잘못 되었습니다.' },
+        'macAddress',
+        { type: 'custom', message: 'mac주소값이 잘못 되었습니다.' },
         { shouldFocus: true }
       );
     }
@@ -57,7 +63,8 @@ const InsertUpload = () => {
                 type="text"
                 className={cls(
                   type === 'floor' ? 'w-[77px] ' : 'w-[295px] ',
-                  'bg-gray-2 px-[16px] text-[14px] rounded-[4px]'
+                  errors?.[type] ? 'border-[1px] border-red-500 bg-fail-2' : 'bg-gray-2',
+                  'px-[16px] text-[14px] rounded-[4px]'
                 )}
                 {...register(type, { required: true })}
               />
