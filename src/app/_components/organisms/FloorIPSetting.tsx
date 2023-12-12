@@ -16,20 +16,20 @@ const FloorIPSetting = ({ page, register, isSetup }: FloorIPSettingProps) => {
           <div key={floor} className="flex flex-col items-center gap-[13px] text-[14px]">
             <div className="flex gap-[8px]">
               <input
-                type="number"
+                type="text"
                 className={cls(
                   isSetup ? 'bg-white' : 'bg-gray-2',
-                  'w-[102px] h-[36px] rounded-[4px] px-[16px] appearance-none'
+                  'w-[102px] h-[36px] rounded-[4px] px-[16px]'
                 )}
                 disabled={isSetup}
                 {...register(`admin_floor_start_ip_address_${floor}F`, { required: true })}
                 placeholder="시작IP 입력"
               />
               <input
-                type="number"
+                type="text"
                 className={cls(
                   isSetup ? 'bg-white' : 'bg-gray-2',
-                  'w-[102px] h-[36px] rounded-[4px] px-[16px] appearance-none'
+                  'w-[102px] h-[36px] rounded-[4px] px-[16px]'
                 )}
                 disabled={isSetup}
                 {...register(`admin_floor_end_ip_address_${floor}F`, { required: true })}

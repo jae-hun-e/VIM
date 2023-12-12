@@ -22,7 +22,11 @@ export interface DefaultSettingState {
 const AdminPage = () => {
   const [curPage, setCurPage] = useState<number>(0);
   const [isSetup, setIsSetup] = useRecoilState(isDefaultSetup);
-  const { data, isError, error } = useQuery({ queryKey: [getAdminInfo], queryFn: getAdminInfo });
+  const {
+    data: adminConfigRes,
+    isError,
+    error
+  } = useQuery({ queryKey: [getAdminInfo], queryFn: getAdminInfo });
   const { mutateAsync: configMutate } = useMutation({
     mutationKey: [patchAdminConfig],
     mutationFn: patchAdminConfig
@@ -38,14 +42,13 @@ const AdminPage = () => {
   const floorPages: number[][] = pageNation(totalFloor);
 
   useEffect(() => {
-    if (data?.data) {
-      for (const { key, value } of data.data) {
-        console.log(key, value);
-        //   setValue(key, data[key]);
+    if (adminConfigRes?.data?.length) {
+      for (const { key, value } of adminConfigRes.data) {
+        setValue(key, value);
       }
       setIsSetup(true);
     }
-  }, [data]);
+  }, [adminConfigRes]);
 
   const onSaveBtn = (): boolean => {
     for (const { type } of defaultSettingState) {
@@ -95,12 +98,12 @@ const AdminPage = () => {
                 {title}
               </label>
               <input
-                type="number"
+                type="text"
                 id={type}
                 className={cls(
                   type === 'admin_floor' ? 'w-[77px]' : 'w-[295px]',
                   isSetup ? 'bg-white' : 'bg-gray-2',
-                  'h-[36px] bg-gray-2 rounded-[4px] px-[16px] appearance-none'
+                  'h-[36px] bg-gray-2 rounded-[4px] px-[16px]'
                 )}
                 disabled={isSetup}
                 {...register(type, { required: true })}

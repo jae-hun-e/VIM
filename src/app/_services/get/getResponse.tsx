@@ -9,7 +9,7 @@ import { SearchProps } from '@/app/_types/reqestType';
 
 export async function getAdminInfo() {
   const res = await client.get<ResponseType<ResponseAdminConfig[]>>(`/admin/config`);
-
+  console.log('res-getAdminInfo', res);
   return res.data;
 }
 
