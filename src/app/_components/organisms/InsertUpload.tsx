@@ -7,6 +7,8 @@ import { useForm } from 'react-hook-form';
 import { cls } from '@utils/util';
 import { InsertUploadProps } from '@/app/_types/reqestType';
 import { validatedIpAddress, validatedMACAddress } from '@utils/validation';
+import { useMutation } from '@tanstack/react-query';
+import { postInsertIP } from '@services/post/postFormData';
 
 const InsertUpload = () => {
   const {
@@ -17,6 +19,10 @@ const InsertUpload = () => {
     setError
   } = useForm<InsertUploadProps>();
 
+  const { mutate } = useMutation({
+    mutationKey: [postInsertIP],
+    mutationFn: postInsertIP
+  });
   const handleInsertUpload = (data: InsertUploadProps) => {
     if (!validatedIpAddress(data.ipAddress)) {
       setError(
@@ -32,6 +38,7 @@ const InsertUpload = () => {
         { shouldFocus: true }
       );
     }
+    mutate(data);
     console.log('data', data);
   };
 
@@ -43,7 +50,7 @@ const InsertUpload = () => {
   };
 
   return (
-    <Box className="w-[485px]">
+    <Box className="max-w-[485px]">
       <div className="flex justify-between items-center">
         <p className="text-[24px]">정보 기입</p>
         <Link href={routerHref.remainIP} className="text-gray-4">
@@ -60,7 +67,7 @@ const InsertUpload = () => {
               </label>
               <input
                 id={title}
-                type="text"
+                type={type === 'floor' ? 'number' : 'text'}
                 className={cls(
                   type === 'floor' ? 'w-[77px] ' : 'w-[295px] ',
                   errors?.[type] ? 'border-[1px] border-red-500 bg-fail-2' : 'bg-gray-2',

@@ -53,16 +53,13 @@ const SearchBar = () => {
       keyword: selected.type,
       value: people
     });
-
+    setIsSearch(!isSearch);
     reset({ people: '' });
   };
 
   useEffect(() => {
-    setIsSearch(!isSearch);
-  }, [search]);
-
-  useEffect(() => {
     data && saveSearchResponse(data);
+    setIsSearch(!isSearch);
   }, [data]);
 
   return (

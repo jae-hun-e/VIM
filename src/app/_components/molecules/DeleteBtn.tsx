@@ -3,7 +3,7 @@ import { BtnProps } from '@customTypes/commendTypes';
 
 const DeleteBtn = ({ className, onClick }: BtnProps) => {
   return (
-    <button className={className} type="submit" onClick={onClick}>
+    <button className={className} type="button" onClick={onClick}>
       <BtnDelete />
     </button>
   );

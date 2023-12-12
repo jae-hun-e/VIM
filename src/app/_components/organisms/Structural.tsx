@@ -5,9 +5,17 @@ import { cls } from '@utils/util';
 import { useState } from 'react';
 import IPByFloor from '@components/organisms/IPByFloor';
 import IPByDepartment from '@components/organisms/IPByDepartment';
+import { useQuery } from '@tanstack/react-query';
+import { getAddress } from '@services/get/getResponse';
 
 const Structural = () => {
   const [tab, setTab] = useState(statusTabList[0].title);
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: [getAddress, tab],
+    queryFn: () => getAddress({ type: tab })
+  });
+
   const handleSelectTab = (tab: string) => {
     setTab(tab);
   };

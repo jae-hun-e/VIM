@@ -1,23 +1,27 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
-
-import { getResponse } from '@services/get/getResponse';
+import { getRemainIP } from '@services/get/getResponse';
 
 const RemainIP = () => {
-  const { isError, data, error } = useQuery({
-    queryKey: [getResponse],
-    queryFn: getResponse
+  const {
+    isError,
+    data: response,
+    error
+  } = useQuery({
+    queryKey: [getRemainIP],
+    queryFn: getRemainIP
   });
 
   if (isError) throw error;
 
-  if (!data) {
+  if (!response?.data) {
     return <div />;
   }
 
+  console.log(response);
   return (
     <div>
-      {data.map(({ floor, ipArr }) => {
+      {response.data.map(({ floor, ipArr }) => {
         return (
           <div key={floor} className="mb-[20px]">
             <p className="text-[20px] mb-[16px]">{floor}층</p>

@@ -43,7 +43,7 @@ export const infoIP: Array<{ id: number; title: string; type: typeList }> = [
 
 export const statusTabList = [
   { id: 1, koTitle: '층별', title: 'floor' },
-  { id: 2, koTitle: '부서별', title: 'department' }
+  { id: 2, koTitle: '부서별', title: 'dept' }
 ];
 
 export const dropBoxList = [

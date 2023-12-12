@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { ResponsePeople } from '@/app/_types/ResponseType';
 
 export interface BtnProps {
   className?: string;

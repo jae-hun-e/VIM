@@ -18,7 +18,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",
-    "recoil": "^0.7.7"
+    "recoil": "^0.7.7",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/node": "^20",
