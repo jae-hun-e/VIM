@@ -27,6 +27,7 @@ const Login = () => {
   >({
     mutationFn: postLogin,
     onSuccess: () => {
+      localStorage.setItem('login', 'true');
       router.push('/dashboard/admin');
     },
     onError: (error) => {

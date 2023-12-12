@@ -6,9 +6,14 @@ import Login from '@components/organisms/Login';
 import Logo from '@assets/logo/icon_logo.svg';
 import DescribeImg from '@assets/icon/Icon_describeImg.svg';
 import { cls } from '@utils/util';
+import { useRouter } from 'next/navigation';
 
 const Register = () => {
   const [tab, setTab] = useState<string>('');
+  const router = useRouter();
+  const isLogin = localStorage.getItem('login');
+  if (isLogin) router.push('/dashboard/admin');
+
   return (
     <article className={cls(tab === 'login' ? 'bg-gray-1' : '', 'w-full h-[100vh]')}>
       <RegisterHeader onClickTag={setTab} onSelectTag={tab} />
