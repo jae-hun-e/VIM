@@ -6,11 +6,20 @@ export interface LoginFormProps {
 export interface AdminConfig {
   keys: ConfigKey[];
 }
-export interface ConfigKey {
+
+interface ConfigKey {
   key: string;
   value: string;
 }
 
+export interface AdminFloor {
+  floors: Floor[];
+}
+interface Floor {
+  floor: number;
+  startIpAddress: string;
+  endIpAddress: string;
+}
 export interface InsertUploadProps {
   ipAddress: string;
   macAddress: string;

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { cls, pageNation } from '@utils/util';
 import SaveBtn from '@components/molecules/SaveBtn';
 import FloorIPSetting from '@components/organisms/FloorIPSetting';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import RightArrowBtn from '@components/molecules/RightArrowBtn';
 import LeftArrowBtn from '@components/molecules/LeftArrowBtn';
 import { defaultSettingState } from '@constants/constantsList';
@@ -12,8 +12,9 @@ import { isDefaultSetup } from '@stores/atoms';
 import EditBtn from '@components/molecules/EditBtn';
 import { getAdminInfo } from '@services/get/getResponse';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { postAdminConfig } from '@services/post/postFormData';
-import { AdminConfig } from '@/app/_types/reqestType';
+import { postAdminFloor } from '@services/post/postFormData';
+import { patchAdminConfig } from '@services/patch/patchInfo';
+import { AdminConfig, AdminFloor } from '@/app/_types/reqestType';
 
 export interface DefaultSettingState {
   [key: string]: string;
@@ -22,39 +23,68 @@ const AdminPage = () => {
   const [curPage, setCurPage] = useState<number>(0);
   const [isSetup, setIsSetup] = useRecoilState(isDefaultSetup);
   const { data, isError, error } = useQuery({ queryKey: [getAdminInfo], queryFn: getAdminInfo });
-  const { mutate } = useMutation({
-    mutationKey: [postAdminConfig],
-    mutationFn: postAdminConfig
+  const { mutateAsync: configMutate } = useMutation({
+    mutationKey: [patchAdminConfig],
+    mutationFn: patchAdminConfig
+  });
+  const { mutate: floorMutate } = useMutation({
+    mutationKey: [postAdminFloor],
+    mutationFn: postAdminFloor
   });
 
-  const { register, handleSubmit, watch, trigger } = useForm<DefaultSettingState>();
+  const { register, handleSubmit, watch, setValue } = useForm<DefaultSettingState>();
 
-  const totalFloor = watch('admin_floor');
-  const floorPages: number[][] = pageNation(Number(totalFloor));
+  const totalFloor = Number(watch('admin_floor'));
+  const floorPages: number[][] = pageNation(totalFloor);
+
+  useEffect(() => {
+    if (data?.data) {
+      for (const { key, value } of data.data) {
+        console.log(key, value);
+        //   setValue(key, data[key]);
+      }
+      setIsSetup(true);
+    }
+  }, [data]);
 
   const onSaveBtn = (): boolean => {
     for (const { type } of defaultSettingState) {
       if (!watch(type)) return false;
     }
-    for (let i = 1; i <= Number(totalFloor); i++) {
-      if (!(watch(`floor_end_ip_address_${i}F`) && watch(`floor_start_ip_address_${i}F`)))
+    for (let i = 1; i <= totalFloor; i++) {
+      if (
+        !(watch(`admin_floor_end_ip_address_${i}F`) && watch(`admin_floor_start_ip_address_${i}F`))
+      )
         return false;
     }
     return true;
   };
 
-  const handleSubmitAdminConfig = (data: DefaultSettingState) => {
-    setIsSetup(true);
+  const handleSubmitAdminConfig = async (data: DefaultSettingState) => {
+    const configReq = { keys: [] } as AdminConfig;
 
-    const req = { keys: [] } as AdminConfig;
-    for (const key in data) {
-      req.keys.push({ key, value: data[key] });
+    for (const { type } of defaultSettingState) {
+      configReq.keys.push({ key: type, value: data[type] });
     }
-    console.log(data);
+    console.log('configReq', configReq);
+    const configRes = await configMutate(configReq);
+    console.log('configRes', configRes);
 
-    // todo BE api 변경 후 test
-    // mutate(req);
+    const floorReq = { floors: [] } as AdminFloor;
+    for (let i = 1; i <= totalFloor; i++) {
+      floorReq.floors.push({
+        floor: i,
+        startIpAddress: data[`admin_floor_start_ip_address_${i}F`],
+        endIpAddress: data[`admin_floor_end_ip_address_${i}F`]
+      });
+    }
+    console.log('floorReq', floorReq);
+    const floorRes = floorMutate(floorReq);
+    console.log('floorRes', floorRes);
+
+    setIsSetup(true);
   };
+
   return (
     <form className="relative">
       <article className="flex flex-col gap-4 mb-[32px]">
@@ -81,14 +111,13 @@ const AdminPage = () => {
       </article>
 
       <article className="w-full flex justify-center">
-        {Number(watch('admin_floor')) > 4 && curPage > 0 && (
+        {totalFloor > 4 && curPage > 0 && (
           <LeftArrowBtn className="pb-[72px]" onClick={() => setCurPage(curPage - 1)} />
         )}
         {watch('admin_floor') && FloorIPSetting({ page: floorPages[curPage], register, isSetup })}
-        {Number(watch('admin_floor')) > 4 &&
-          curPage < Math.ceil(Number(watch('admin_floor')) / 4) - 1 && (
-            <RightArrowBtn className="pb-[72px]" onClick={() => setCurPage(curPage + 1)} />
-          )}
+        {totalFloor > 4 && curPage < Math.ceil(Number(watch('admin_floor')) / 4) - 1 && (
+          <RightArrowBtn className="pb-[72px]" onClick={() => setCurPage(curPage + 1)} />
+        )}
       </article>
 
       <div className="flex justify-end">

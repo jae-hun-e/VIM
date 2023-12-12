@@ -1,7 +1,6 @@
 import { client } from '@services/common/createAxios';
-import { errorBoundary } from '@services/common/customError';
 import {
-  ResponseDefaultSetup,
+  ResponseAdminConfig,
   ResponsePeople,
   ResponseRemainIP,
   ResponseType
@@ -9,7 +8,7 @@ import {
 import { SearchProps } from '@/app/_types/reqestType';
 
 export async function getAdminInfo() {
-  const res = await client.get<ResponseType<ResponseDefaultSetup[]>>(`/admin/config`);
+  const res = await client.get<ResponseType<ResponseAdminConfig[]>>(`/admin/config`);
 
   return res.data;
 }

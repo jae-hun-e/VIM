@@ -22,7 +22,7 @@ const FloorIPSetting = ({ page, register, isSetup }: FloorIPSettingProps) => {
                   'w-[102px] h-[36px] rounded-[4px] px-[16px] appearance-none'
                 )}
                 disabled={isSetup}
-                {...register(`floor_start_ip_address_${floor}F`, { required: true })}
+                {...register(`admin_floor_start_ip_address_${floor}F`, { required: true })}
                 placeholder="시작IP 입력"
               />
               <input
@@ -32,7 +32,7 @@ const FloorIPSetting = ({ page, register, isSetup }: FloorIPSettingProps) => {
                   'w-[102px] h-[36px] rounded-[4px] px-[16px] appearance-none'
                 )}
                 disabled={isSetup}
-                {...register(`floor_end_ip_address_${floor}F`, { required: true })}
+                {...register(`admin_floor_end_ip_address_${floor}F`, { required: true })}
                 placeholder="종료IP 입력"
               />
             </div>

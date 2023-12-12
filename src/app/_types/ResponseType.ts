@@ -17,7 +17,7 @@ export interface ResponseLogin {
   errors: [];
 }
 
-export interface ResponseDefaultSetup {
+export interface ResponseAdminConfig {
   id: number;
   key: string;
   value: string;
