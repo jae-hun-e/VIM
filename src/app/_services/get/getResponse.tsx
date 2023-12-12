@@ -32,7 +32,7 @@ export async function getAddress({ type }: AddressProps) {
 }
 
 export async function getSearchList({ keyword, value }: SearchProps) {
-  const response = await client.get<ResponsePeople[]>('/address/search', {
+  const response = await client.get<ResponseType<ResponsePeople[]>>('/address/search', {
     params: {
       keyword,
       value

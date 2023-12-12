@@ -5,24 +5,24 @@ import { ResponsePeople } from '@/app/_types/ResponseType';
 import { Layout } from '@/app/_types/commendTypes';
 import Link from 'next/link';
 import { routerHref } from '@constants/constantsList';
-import { useRecoilState } from 'recoil';
-import { selectedPeople } from '@stores/atoms';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { searchList, selectedPeople } from '@stores/atoms';
 
 interface SearchListProps {
-  searchList: ResponsePeople[];
   layOut?: Layout;
 }
 
-const SearchList = ({ searchList, layOut = Layout.flex }: SearchListProps) => {
+const SearchList = ({ layOut = Layout.flex }: SearchListProps) => {
+  const list = useRecoilValue(searchList);
   const [selected, setSelectedPeople] = useRecoilState(selectedPeople);
 
   const handleSelected = (idx: number) => {
-    setSelectedPeople({ idx, info: searchList[idx] });
+    setSelectedPeople({ idx, info: list && list[idx] });
   };
 
   return (
     <article className={cls(layOut, 'gap-[32px]')}>
-      {searchList.map((peopleInfo, idx) => {
+      {list?.map((peopleInfo, idx) => {
         const { ipAddress, floor, macAddress, department } = peopleInfo;
         return (
           <Link key={ipAddress} href={routerHref.managementIP}>

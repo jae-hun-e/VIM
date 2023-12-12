@@ -1,11 +1,11 @@
-import { deptIP } from '@constants/dummyData';
 import Monitor from '@assets/icon/icon_monitor.svg';
 import Hospital from '@assets/icon/icon_monitor_hospital.svg';
+import { StatusList } from '@/app/_types/ResponseType';
 
-const IPByDepartment = () => {
+const IPByDepartment = ({ list }: { list: StatusList }) => {
   return (
     <div className="flex flex-wrap gap-[16px]">
-      {deptIP.map(({ key, addressList }) => {
+      {list.map(({ key, addressList }) => {
         return (
           <div key={key} className="mb-[20px] flex flex-col max-w-[440px]">
             <p className="text-[20px] mb-[16px]">{key}</p>

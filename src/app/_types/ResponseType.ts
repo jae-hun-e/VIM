@@ -36,3 +36,10 @@ export interface ResponseRemainIP {
   floor: number;
   ipArr: string[];
 }
+
+export interface StatusListProps {
+  key: string;
+  addressList: ResponsePeople[];
+}
+
+export type StatusList = StatusListProps[];

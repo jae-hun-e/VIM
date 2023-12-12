@@ -51,3 +51,19 @@ export const dropBoxList = [
   { id: 2, name: 'IP', type: 'ip' },
   { id: 3, name: 'MAC', type: 'mac' }
 ];
+
+[
+  {
+    key: '유도부',
+    addressList: [
+      {
+        ipAddress: '192.168.0.2',
+        macAddress: '00:1A:2B:3C:4D:5E',
+        name: '조재훈',
+        floor: 1,
+        department: '유도부',
+        isComputer: true
+      }
+    ]
+  }
+];

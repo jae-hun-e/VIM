@@ -5,7 +5,7 @@ import DropBox from '@components/molecules/DropBox';
 import { useEffect, useState } from 'react';
 import { SelectedProps } from '@/app/_types/commendTypes';
 import { useQuery } from '@tanstack/react-query';
-import { getSearchList } from '@services/get/getResponse';
+import { getAddress, getSearchList } from '@services/get/getResponse';
 import { useSetRecoilState } from 'recoil';
 import { searchList } from '@stores/atoms';
 
@@ -28,12 +28,12 @@ const SearchBar = () => {
     value: ''
   });
 
-  const [isSearch, setIsSearch] = useState(false);
-  const { data } = useQuery({
-    queryKey: [getSearchList],
-    queryFn: () => getSearchList(search),
-    enabled: isSearch
+  // const [isSearch, setIsSearch] = useState(false);
+  const { data: searchData } = useQuery({
+    queryKey: [getSearchList, search],
+    queryFn: () => getSearchList(search)
   });
+  console.log('searchData');
   const [selected, setSelected] = useState<SelectedProps>({ id: 0, name: '선택', type: '' });
 
   const saveSearchResponse = useSetRecoilState(searchList);
@@ -53,14 +53,15 @@ const SearchBar = () => {
       keyword: selected.type,
       value: people
     });
-    setIsSearch(!isSearch);
+    // setIsSearch(!isSearch);
     reset({ people: '' });
   };
 
   useEffect(() => {
-    data && saveSearchResponse(data);
-    setIsSearch(!isSearch);
-  }, [data]);
+    console.log('search data', searchData?.data);
+    searchData?.data && saveSearchResponse(searchData.data);
+    // setIsSearch(!isSearch);
+  }, [searchData?.data]);
 
   return (
     <>

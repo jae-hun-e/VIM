@@ -1,11 +1,11 @@
-import { floorIP } from '@constants/dummyData';
 import Monitor from '@assets/icon/icon_monitor.svg';
 import Hospital from '@assets/icon/icon_monitor_hospital.svg';
+import { StatusList } from '@/app/_types/ResponseType';
 
-const IPByFloor = () => {
+const IPByFloor = ({ list }: { list: StatusList }) => {
   return (
     <div>
-      {[...floorIP].reverse().map(({ key, addressList }) => {
+      {list.map(({ key, addressList }) => {
         return (
           <div key={key} className="mb-[20px]">
             <p className="text-[20px] mb-[16px]">{key}층</p>

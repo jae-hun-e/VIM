@@ -1,9 +1,12 @@
 import { atom } from 'recoil';
 import { ResponsePeople } from '@/app/_types/ResponseType';
+import { recoilPersist } from 'recoil-persist';
 
+const { persistAtom } = recoilPersist();
 export const isDefaultSetup = atom<boolean>({
   key: 'isDefaultSetup',
-  default: false
+  default: false,
+  effects_UNSTABLE: [persistAtom]
 });
 
 export const searchList = atom<ResponsePeople[] | null>({
