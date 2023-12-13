@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil';
 import { isDefaultSetup } from '@stores/atoms';
 import useCheckPath from '@hooks/useCheckPath';
 import { APP_TITLE, constantsList } from '@constants/constantsList';
-import FailModel from '@components/molecules/FailModel';
+import FailModel from '@components/organisms/FailModel';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 

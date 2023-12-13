@@ -1,4 +1,4 @@
-import Model from '@components/atoms/Model';
+import Model from '@components/molecules/Model';
 import EditBtn from '@components/molecules/EditBtn';
 import DeleteBtn from '@components/molecules/DeleteBtn';
 import { useState } from 'react';

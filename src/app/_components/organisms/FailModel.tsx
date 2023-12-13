@@ -1,4 +1,4 @@
-import Model from '@components/atoms/Model';
+import Model from '@components/molecules/Model';
 import OkBtn from '@components/molecules/OkBtn';
 
 interface FailModelProps {
