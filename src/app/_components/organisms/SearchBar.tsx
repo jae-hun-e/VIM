@@ -3,15 +3,10 @@ import { useForm } from 'react-hook-form';
 import SearchBtn from '@components/molecules/SearchBtn';
 import DropBox from '@components/molecules/DropBox';
 import { useEffect, useState } from 'react';
-import { SelectedProps } from '@/app/_types/commendTypes';
 import { useQuery } from '@tanstack/react-query';
-import { getAddress, getSearchList } from '@services/get/getResponse';
+import { getSearchList } from '@services/get/getResponse';
 import { useSetRecoilState } from 'recoil';
 import { searchList } from '@stores/atoms';
-
-interface SearchPeople {
-  people?: string;
-}
 
 // todo custom hook 으로 분리 + 데이터 단순화
 const SearchBar = () => {
@@ -28,17 +23,16 @@ const SearchBar = () => {
     value: ''
   });
 
-  // const [isSearch, setIsSearch] = useState(false);
   const { data: searchData } = useQuery({
     queryKey: [getSearchList, search],
-    queryFn: () => getSearchList(search)
+    queryFn: () => getSearchList(search),
+    enabled: !!search.keyword
   });
-  console.log('searchData');
-  const [selected, setSelected] = useState<SelectedProps>({ id: 0, name: '선택', type: '' });
+  const [selected, setSelected] = useState({ id: 0, name: '선택', type: '' });
 
   const saveSearchResponse = useSetRecoilState(searchList);
 
-  const handleSubmitSearch = ({ people }: SearchPeople) => {
+  const handleSubmitSearch = ({ people }: { people?: string }) => {
     if (!selected.type) {
       setError('people', { type: 'custom', message: '검색하려는 종류를 선택해주세요.' });
       return;
@@ -53,14 +47,12 @@ const SearchBar = () => {
       keyword: selected.type,
       value: people
     });
-    // setIsSearch(!isSearch);
     reset({ people: '' });
   };
 
   useEffect(() => {
     console.log('search data', searchData?.data);
     searchData?.data && saveSearchResponse(searchData.data);
-    // setIsSearch(!isSearch);
   }, [searchData?.data]);
 
   return (
