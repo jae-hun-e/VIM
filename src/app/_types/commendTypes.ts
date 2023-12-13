@@ -21,3 +21,10 @@ export interface SelectedProps {
   name: string;
   type: string;
 }
+
+type TypeList = 'ipAddress' | 'macAddress' | 'name' | 'floor' | 'department';
+export interface InfoArrProps {
+  title: string;
+  type: TypeList;
+  value?: string | number;
+}

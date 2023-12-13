@@ -6,21 +6,20 @@ import { Layout } from '@/app/_types/commendTypes';
 import InfoModel from '@components/molecules/InfoModel';
 import { useRecoilState } from 'recoil';
 import { selectedPeople } from '@stores/atoms';
+import { useState } from 'react';
 
 const ManagementIP = () => {
   const [selected, setSelectedPeople] = useRecoilState(selectedPeople);
 
-  const notSelectedPeople = () => {
-    setSelectedPeople({ ...selected, info: null });
+  const handleOpenModel = () => {
+    setSelectedPeople({ idx: selected.idx, info: null });
   };
 
   return (
-    <Box className="flex flex-col w-full max-h-[90vh] pt-0 gap-[32px] ">
+    <Box className="flex flex-col w-full min-h-[50vh] max-h-[90vh] pt-0 gap-[32px] ">
       <SearchBar />
       <SearchList layOut={Layout.grid} />
-      {selected.info !== null ? (
-        <InfoModel handleClose={notSelectedPeople} info={selected.info} />
-      ) : null}
+      {selected.info && <InfoModel openModel={handleOpenModel} info={selected.info} />}
     </Box>
   );
 };
