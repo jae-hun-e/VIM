@@ -1,7 +1,6 @@
 'use client';
 import Box from '@components/atoms/Box';
 import { cls } from '@utils/util';
-import { ResponsePeople } from '@/app/_types/ResponseType';
 import { Layout } from '@/app/_types/commendTypes';
 import Link from 'next/link';
 import { routerHref } from '@constants/constantsList';

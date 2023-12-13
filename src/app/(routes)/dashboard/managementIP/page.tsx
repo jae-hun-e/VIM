@@ -14,15 +14,18 @@ const ManagementIP = () => {
 
   useEffect(() => {
     if (!!selected.info) setVisible(true);
-  }, [selected.info]);
+  }, [selected]);
+
+  const handleCloseModel = () => {
+    console.log('왜?');
+    setVisible(false);
+  };
 
   return (
     <Box className="flex flex-col w-full min-h-[50vh] max-h-[90vh] pt-0 gap-[32px] ">
       <SearchBar />
       <SearchList layOut={Layout.grid} />
-      {visible && (
-        <InfoModel info={selected.info} visible={visible} onClose={() => setVisible(!visible)} />
-      )}
+      {visible && <InfoModel info={selected.info} visible={visible} onClose={handleCloseModel} />}
     </Box>
   );
 };

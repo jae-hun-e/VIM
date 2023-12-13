@@ -24,7 +24,7 @@ export interface InsertUploadProps {
   ipAddress: string;
   macAddress: string;
   name: string;
-  floor: string;
+  floor: number;
   department: string;
 }
 

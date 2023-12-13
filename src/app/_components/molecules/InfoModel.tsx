@@ -12,6 +12,8 @@ import { useMutation } from '@tanstack/react-query';
 import { patchPeopleInfo } from '@services/patch/patchInfo';
 import { deletePeopleInfo } from '@services/delete/deleteInfo';
 import { ResponsePeople } from '@/app/_types/ResponseType';
+import { useRecoilState } from 'recoil';
+import { searchList } from '@stores/atoms';
 
 interface InfoModelProps {
   info: ResponsePeople | null;
@@ -20,16 +22,28 @@ interface InfoModelProps {
 }
 const InfoModel = ({ info, visible, onClose }: InfoModelProps) => {
   const [isSetup, setIsSetup] = useState(true);
-
+  const [list, setList] = useRecoilState(searchList);
   const { register, handleSubmit, watch } = useForm<InsertUploadProps>();
 
   const { mutate: patchMutate } = useMutation({
     mutationKey: [patchPeopleInfo],
-    mutationFn: patchPeopleInfo
+    mutationFn: patchPeopleInfo,
+    onMutate: (data) => {
+      if (!list) return;
+      const newList = [...list];
+      const idx = newList.findIndex(({ ipAddress }) => ipAddress === data.ipAddress);
+      newList[idx] = { ...newList[idx], ...data };
+      setList(newList);
+    }
   });
   const { mutate: deleteMutate } = useMutation({
     mutationKey: [deletePeopleInfo],
-    mutationFn: deletePeopleInfo
+    mutationFn: deletePeopleInfo,
+    onMutate: (target) => {
+      if (!list) return;
+      const newList = list.filter(({ ipAddress }) => ipAddress !== target);
+      setList(newList);
+    }
   });
 
   if (!info) return;
@@ -63,6 +77,7 @@ const InfoModel = ({ info, visible, onClose }: InfoModelProps) => {
     onClose();
   };
 
+  //
   return (
     <Model isOpen={visible} onClose={onClose} className="w-[485px] h-[400px]">
       <div className="flex-grow flex flex-col justify-start items-start gap-[24px] text-[20px]">
