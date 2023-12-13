@@ -17,3 +17,21 @@ export const pageNation = (totalFloor: number) => {
   }
   return floorPages;
 };
+
+interface MappingOptions<T> {
+  keyword: keyof T;
+  value: keyof T;
+  data: T[] | undefined;
+}
+export const mapping = <T,>({ keyword, value, data }: MappingOptions<T>) => {
+  if (!data) return;
+  return data.reduce(
+    (a, b) => {
+      a[b[keyword] + '']
+        ? a[b[keyword] + ''].push(b[value] + '')
+        : (a[b[keyword] + ''] = [b[value] + '']);
+      return a;
+    },
+    {} as Record<string, string[]>
+  );
+};

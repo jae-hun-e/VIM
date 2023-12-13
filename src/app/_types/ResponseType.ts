@@ -34,7 +34,7 @@ export interface ResponsePeople {
 
 export interface ResponseRemainIP {
   floor: number;
-  ipArr: string[];
+  ipAddress: string[];
 }
 
 export interface StatusListProps {
