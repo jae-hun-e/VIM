@@ -39,7 +39,7 @@ const SideBar = () => {
           </div>
         ))}
       </nav>
-      {openModel ? <FailModel handleClose={() => setOpenModel(!openModel)} /> : null}
+      <FailModel openModel={openModel} closeModel={() => setOpenModel(!openModel)} />
     </section>
   );
 };

@@ -1,5 +1,5 @@
+'use client';
 import Model from '@components/atoms/Model';
-import { ResponsePeople } from '@/app/_types/ResponseType';
 import EditBtn from '@components/molecules/EditBtn';
 import DeleteBtn from '@components/molecules/DeleteBtn';
 import { useState } from 'react';
@@ -10,16 +10,17 @@ import { InsertUploadProps } from '@/app/_types/reqestType';
 import { InfoArrProps } from '@/app/_types/commendTypes';
 import { useMutation } from '@tanstack/react-query';
 import { patchPeopleInfo } from '@services/patch/patchInfo';
-import { defaultSettingState } from '@constants/constantsList';
 import { deletePeopleInfo } from '@services/delete/deleteInfo';
+import { ResponsePeople } from '@/app/_types/ResponseType';
 
 interface InfoModelProps {
-  openModel: () => void;
-  info: ResponsePeople;
+  info: ResponsePeople | null;
+  visible: boolean;
+  onClose: () => void;
 }
-
-const InfoModel = ({ openModel, info }: InfoModelProps) => {
+const InfoModel = ({ info, visible, onClose }: InfoModelProps) => {
   const [isSetup, setIsSetup] = useState(true);
+
   const { register, handleSubmit, watch } = useForm<InsertUploadProps>();
 
   const { mutate: patchMutate } = useMutation({
@@ -49,18 +50,21 @@ const InfoModel = ({ openModel, info }: InfoModelProps) => {
     return true;
   };
 
-  const handlePatch = (data: InsertUploadProps) => {
+  const handlePatch = () => {
+    setIsSetup(!isSetup);
+  };
+  const handleSave = (data: InsertUploadProps) => {
     patchMutate(data);
-    openModel();
+    onClose();
   };
 
   const handleDelete = () => {
     deleteMutate(infoArr[0]?.value as string);
-    openModel();
+    onClose();
   };
 
   return (
-    <Model className="w-[485px] h-[400px]">
+    <Model isOpen={visible} onClose={onClose} className="w-[485px] h-[400px]">
       <div className="flex-grow flex flex-col justify-start items-start gap-[24px] text-[20px]">
         <form className="flex flex-col gap-[16px]">
           {infoArr.map(({ title, type, value }) => {
@@ -89,9 +93,9 @@ const InfoModel = ({ openModel, info }: InfoModelProps) => {
 
       <div className="flex  justify-center gap-[24px]">
         {isSetup ? (
-          <EditBtn onClick={() => setIsSetup(!isSetup)} />
+          <EditBtn onClick={handlePatch} />
         ) : (
-          <SaveBtn disabled={onSaveBtn()} onClick={handleSubmit(handlePatch)} />
+          <SaveBtn disabled={onSaveBtn()} onClick={handleSubmit(handleSave)} />
         )}
         <DeleteBtn onClick={handleDelete} />
       </div>

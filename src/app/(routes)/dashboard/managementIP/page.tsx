@@ -4,22 +4,25 @@ import Box from '@components/atoms/Box';
 import SearchList from '@components/molecules/SearchList';
 import { Layout } from '@/app/_types/commendTypes';
 import InfoModel from '@components/molecules/InfoModel';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { selectedPeople } from '@stores/atoms';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ManagementIP = () => {
-  const [selected, setSelectedPeople] = useRecoilState(selectedPeople);
+  const selected = useRecoilValue(selectedPeople);
+  const [visible, setVisible] = useState(false);
 
-  const handleOpenModel = () => {
-    setSelectedPeople({ idx: selected.idx, info: null });
-  };
+  useEffect(() => {
+    if (!!selected.info) setVisible(true);
+  }, [selected.info]);
 
   return (
     <Box className="flex flex-col w-full min-h-[50vh] max-h-[90vh] pt-0 gap-[32px] ">
       <SearchBar />
       <SearchList layOut={Layout.grid} />
-      {selected.info && <InfoModel openModel={handleOpenModel} info={selected.info} />}
+      {visible && (
+        <InfoModel info={selected.info} visible={visible} onClose={() => setVisible(!visible)} />
+      )}
     </Box>
   );
 };
