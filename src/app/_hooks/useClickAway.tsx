@@ -11,7 +11,6 @@ const useClickAway = (handler: () => void) => {
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
-    console.log('ref', element);
 
     const handleEvent = (e: MouseEvent) => {
       if (!(e.target instanceof Node)) return;

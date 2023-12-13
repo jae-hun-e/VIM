@@ -16,7 +16,8 @@ const InsertUpload = () => {
     handleSubmit,
     watch,
     formState: { errors },
-    setError
+    setError,
+    reset
   } = useForm<InsertUploadProps>();
 
   const { mutate } = useMutation({
@@ -39,6 +40,7 @@ const InsertUpload = () => {
       );
     }
     mutate(data);
+    reset();
     console.log('data', data);
   };
 

@@ -17,8 +17,7 @@ const ManagementIP = () => {
   }, [selected]);
 
   const handleCloseModel = () => {
-    console.log('왜?');
-    setVisible(false);
+    setVisible(!visible);
   };
 
   return (

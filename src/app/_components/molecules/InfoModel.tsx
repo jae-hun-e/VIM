@@ -1,4 +1,3 @@
-'use client';
 import Model from '@components/atoms/Model';
 import EditBtn from '@components/molecules/EditBtn';
 import DeleteBtn from '@components/molecules/DeleteBtn';
@@ -107,11 +106,14 @@ const InfoModel = ({ info, visible, onClose }: InfoModelProps) => {
       </div>
 
       <div className="flex  justify-center gap-[24px]">
-        {isSetup ? (
-          <EditBtn onClick={handlePatch} />
-        ) : (
-          <SaveBtn disabled={onSaveBtn()} onClick={handleSubmit(handleSave)} />
-        )}
+        <EditBtn onClick={handlePatch} className={cls(isSetup ? 'block' : 'hidden')} />
+
+        <SaveBtn
+          disabled={onSaveBtn()}
+          onClick={handleSubmit(handleSave)}
+          className={cls(isSetup ? 'hidden' : 'block')}
+        />
+
         <DeleteBtn onClick={handleDelete} />
       </div>
     </Model>
