@@ -25,15 +25,3 @@ export const validatedScopeIPAddress = (start: string, end: string) => {
 
   return true;
 };
-
-// interface FormDataProps{
-//   ip : string
-//   max: string
-// }
-// export const validatedFormData =({ip, max}: FormDataProps){
-//   if(!validatedIpAddress(ip)){
-//     return 'ip주소값이 잘못 되었습니다.'
-//   }
-//
-//   return true
-// }

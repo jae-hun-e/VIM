@@ -13,6 +13,7 @@ import { deletePeopleInfo } from '@services/delete/deleteInfo';
 import { ResponsePeople } from '@/app/_types/ResponseType';
 import { useRecoilState } from 'recoil';
 import { searchList } from '@stores/atoms';
+import { validatedIpAddress, validatedMACAddress } from '@utils/validation';
 
 interface InfoModelProps {
   info: ResponsePeople | null;
@@ -22,7 +23,7 @@ interface InfoModelProps {
 const InfoModel = ({ info, visible, onClose }: InfoModelProps) => {
   const [isSetup, setIsSetup] = useState(true);
   const [list, setList] = useRecoilState(searchList);
-  const { register, handleSubmit, watch } = useForm<InsertUploadProps>();
+  const { register, handleSubmit, watch, setError } = useForm<InsertUploadProps>();
 
   const { mutate: patchMutate } = useMutation({
     mutationKey: [patchPeopleInfo],
@@ -67,6 +68,23 @@ const InfoModel = ({ info, visible, onClose }: InfoModelProps) => {
     setIsSetup(!isSetup);
   };
   const handleSave = (data: InsertUploadProps) => {
+    if (!validatedIpAddress(data.ipAddress)) {
+      setError(
+        'ipAddress',
+        { type: 'custom', message: 'ip주소값이 잘못 되었습니다.' },
+        { shouldFocus: true }
+      );
+      return;
+    }
+    if (!validatedMACAddress(data.macAddress)) {
+      setError(
+        'macAddress',
+        { type: 'custom', message: 'mac주소값이 잘못 되었습니다.' },
+        { shouldFocus: true }
+      );
+      return;
+    }
+
     patchMutate(data);
     onClose();
   };

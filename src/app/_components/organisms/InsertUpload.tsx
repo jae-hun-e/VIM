@@ -33,6 +33,7 @@ const InsertUpload = () => {
         { type: 'custom', message: 'ip주소값이 잘못 되었습니다.' },
         { shouldFocus: true }
       );
+      return;
     }
     if (!validatedMACAddress(data.macAddress)) {
       setError(
@@ -40,6 +41,7 @@ const InsertUpload = () => {
         { type: 'custom', message: 'mac주소값이 잘못 되었습니다.' },
         { shouldFocus: true }
       );
+      return;
     }
     mutate(data);
     reset();

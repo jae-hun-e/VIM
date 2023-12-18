@@ -17,6 +17,11 @@ import { patchAdminConfig } from '@services/patch/patchInfo';
 import { AdminConfig, AdminFloor } from '@/app/_types/reqestType';
 import { onSaveBtn } from '@utils/activation';
 import { DefaultSettingState, DefaultSettingStateProps } from '@/app/_types/commendTypes';
+import {
+  validatedIpAddress,
+  validatedMACAddress,
+  validatedScopeIPAddress
+} from '@utils/validation';
 
 const AdminPage = () => {
   const [curPage, setCurPage] = useState<number>(0);
@@ -31,7 +36,7 @@ const AdminPage = () => {
     mutationFn: postAdminFloor
   });
 
-  const { register, handleSubmit, watch, setValue } = useForm<DefaultSettingState>();
+  const { register, handleSubmit, setError, watch, setValue } = useForm<DefaultSettingState>();
 
   const totalFloor = Number(watch('admin_floor'));
   const floorPages: number[][] = pageNation(totalFloor);
@@ -46,6 +51,23 @@ const AdminPage = () => {
   }, [adminConfigRes]);
 
   const handleSubmitAdminConfig = async (data: DefaultSettingState) => {
+    if (!validatedIpAddress(data.ipAddress)) {
+      setError(
+        'ipAddress',
+        { type: 'custom', message: 'ip주소값이 잘못 되었습니다.' },
+        { shouldFocus: true }
+      );
+      return;
+    }
+    if (!validatedMACAddress(data.macAddress)) {
+      setError(
+        'macAddress',
+        { type: 'custom', message: 'mac주소값이 잘못 되었습니다.' },
+        { shouldFocus: true }
+      );
+      return;
+    }
+
     const configReq = { keys: [] } as AdminConfig;
 
     for (const { type } of defaultSettingState) {
@@ -56,6 +78,20 @@ const AdminPage = () => {
 
     const floorReq = { floors: [] } as AdminFloor;
     for (let i = 1; i <= totalFloor; i++) {
+      if (
+        validatedScopeIPAddress(
+          data[`admin_floor_start_ip_address_${i}F`],
+          data[`admin_floor_end_ip_address_${i}F`]
+        )
+      ) {
+        setError(
+          `admin_floor_start_ip_address_${i}F`,
+          { type: 'custom', message: 'ipAddress값이 잘못 되었습니다.' },
+          { shouldFocus: true }
+        );
+        return;
+      }
+
       floorReq.floors.push({
         floor: i,
         startIpAddress: data[`admin_floor_start_ip_address_${i}F`],

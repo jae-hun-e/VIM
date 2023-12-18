@@ -11,11 +11,11 @@ interface ModelProps {
 }
 const Model = ({ className = '', children, isOpen, onClose }: ModelProps) => {
   const ref = useClickAway(() => onClose && onClose());
-  const el = useMemo(() => document.createElement('div'), []);
+  const el = useMemo(() => document?.createElement('div'), []);
   useEffect(() => {
-    document.body?.appendChild(el);
+    document?.body?.appendChild(el);
     return () => {
-      document.body?.removeChild(el);
+      document?.body?.removeChild(el);
     };
   }, []);
 
