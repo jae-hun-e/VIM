@@ -15,10 +15,9 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { postAdminFloor } from '@services/post/postFormData';
 import { patchAdminConfig } from '@services/patch/patchInfo';
 import { AdminConfig, AdminFloor } from '@/app/_types/reqestType';
+import { onSaveBtn } from '@utils/activation';
+import { DefaultSettingState, DefaultSettingStateProps } from '@/app/_types/commendTypes';
 
-export interface DefaultSettingState {
-  [key: string]: string;
-}
 const AdminPage = () => {
   const [curPage, setCurPage] = useState<number>(0);
   const [isSetup, setIsSetup] = useRecoilState(isDefaultSetup);
@@ -45,19 +44,6 @@ const AdminPage = () => {
       setIsSetup(true);
     }
   }, [adminConfigRes]);
-
-  const onSaveBtn = (): boolean => {
-    for (const { type } of defaultSettingState) {
-      if (!watch(type)) return false;
-    }
-    for (let i = 1; i <= totalFloor; i++) {
-      if (
-        !(watch(`admin_floor_end_ip_address_${i}F`) && watch(`admin_floor_start_ip_address_${i}F`))
-      )
-        return false;
-    }
-    return true;
-  };
 
   const handleSubmitAdminConfig = async (data: DefaultSettingState) => {
     const configReq = { keys: [] } as AdminConfig;
@@ -120,7 +106,14 @@ const AdminPage = () => {
         {isSetup ? (
           <EditBtn onClick={() => setIsSetup(!isSetup)} />
         ) : (
-          <SaveBtn disabled={onSaveBtn()} onClick={handleSubmit(handleSubmitAdminConfig)} />
+          <SaveBtn
+            disabled={onSaveBtn<DefaultSettingState, DefaultSettingStateProps>({
+              watch,
+              inputList: defaultSettingState,
+              totalFloor
+            })}
+            onClick={handleSubmit(handleSubmitAdminConfig)}
+          />
         )}
       </div>
     </form>

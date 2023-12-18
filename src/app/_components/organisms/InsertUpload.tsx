@@ -9,6 +9,8 @@ import { InsertUploadProps } from '@/app/_types/reqestType';
 import { validatedIpAddress, validatedMACAddress } from '@utils/validation';
 import { useMutation } from '@tanstack/react-query';
 import { postInsertIP } from '@services/post/postFormData';
+import { onSaveBtn } from '@utils/activation';
+import { InfoIPProps } from '@/app/_types/commendTypes';
 
 const InsertUpload = () => {
   const {
@@ -41,14 +43,6 @@ const InsertUpload = () => {
     }
     mutate(data);
     reset();
-    console.log('data', data);
-  };
-
-  const onSaveBtn = (): boolean => {
-    for (const { type } of infoIP) {
-      if (!watch(type)) return false;
-    }
-    return true;
   };
 
   return (
@@ -81,7 +75,10 @@ const InsertUpload = () => {
           );
         })}
         <div className="flex justify-end mt-[16px]">
-          <SaveBtn disabled={onSaveBtn()} onClick={handleSubmit(handleInsertUpload)} />
+          <SaveBtn
+            disabled={onSaveBtn<InsertUploadProps, InfoIPProps>({ watch, inputList: infoIP })}
+            onClick={handleSubmit(handleInsertUpload)}
+          />
         </div>
       </form>
     </Box>

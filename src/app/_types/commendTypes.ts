@@ -28,3 +28,28 @@ export interface InfoArrProps {
   type: TypeList;
   value?: string | number;
 }
+
+export interface DefaultSettingState {
+  [key: string]: string;
+}
+
+export interface DefaultSettingStateProps {
+  title: string;
+  type: string;
+}
+
+const types = {
+  ipAddress: 'ipAddress',
+  macAddress: 'macAddress',
+  name: 'name',
+  floor: 'floor',
+  department: 'department'
+} as const;
+
+type typeList = (typeof types)[keyof typeof types];
+
+export interface InfoIPProps {
+  id: number;
+  title: string;
+  type: typeList;
+}

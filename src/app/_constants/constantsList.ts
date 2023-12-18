@@ -1,3 +1,5 @@
+import { InfoIPProps } from '@/app/_types/commendTypes';
+
 export const APP_TITLE = '비비아이피병원';
 
 export const routerHref = {
@@ -23,17 +25,7 @@ export const defaultSettingState = [
   { title: '층 수', type: 'admin_floor' }
 ];
 
-const types = {
-  ipAddress: 'ipAddress',
-  macAddress: 'macAddress',
-  name: 'name',
-  floor: 'floor',
-  department: 'department'
-} as const;
-
-type typeList = (typeof types)[keyof typeof types];
-
-export const infoIP: Array<{ id: number; title: string; type: typeList }> = [
+export const infoIP: Array<InfoIPProps> = [
   { id: 1, title: 'IP address', type: 'ipAddress' },
   { id: 2, title: 'MAC address', type: 'macAddress' },
   { id: 3, title: '사원 이름', type: 'name' },
@@ -50,20 +42,4 @@ export const dropBoxList = [
   { id: 1, name: '이름', type: 'name' },
   { id: 2, name: 'IP', type: 'ip' },
   { id: 3, name: 'MAC', type: 'mac' }
-];
-
-[
-  {
-    key: '유도부',
-    addressList: [
-      {
-        ipAddress: '192.168.0.2',
-        macAddress: '00:1A:2B:3C:4D:5E',
-        name: '조재훈',
-        floor: 1,
-        department: '유도부',
-        isComputer: true
-      }
-    ]
-  }
 ];
