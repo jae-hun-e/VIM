@@ -1,6 +1,6 @@
 import { UseFormRegister } from 'react-hook-form';
 import { DefaultSettingState } from '@/app/(routes)/dashboard/admin/page';
-import { cls } from '@utils/util';
+import { cls } from '@utils/utils';
 
 interface FloorIPSettingProps {
   page: number[];

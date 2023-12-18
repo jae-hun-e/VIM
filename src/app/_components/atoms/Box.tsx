@@ -1,4 +1,4 @@
-import { cls } from '@utils/util';
+import { cls } from '@utils/utils';
 import { AtomProps } from '@/app/_types/commendTypes';
 
 interface BoxProps extends AtomProps {

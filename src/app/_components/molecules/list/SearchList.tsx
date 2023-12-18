@@ -1,6 +1,6 @@
 'use client';
 import Box from '@components/atoms/Box';
-import { cls } from '@utils/util';
+import { cls } from '@utils/utils';
 import { Layout } from '@/app/_types/commendTypes';
 import Link from 'next/link';
 import { routerHref } from '@constants/constantsList';

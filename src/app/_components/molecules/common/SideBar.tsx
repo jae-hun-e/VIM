@@ -1,5 +1,5 @@
 'use client';
-import { cls } from '@utils/util';
+import { cls } from '@utils/utils';
 import { useRecoilValue } from 'recoil';
 import { isDefaultSetup } from '@stores/atoms';
 import useCheckPath from '@hooks/useCheckPath';

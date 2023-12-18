@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { cls } from '@utils/util';
+import { cls } from '@utils/utils';
 import { InsertUploadProps } from '@/app/_types/reqestType';
 import { InfoArrProps } from '@/app/_types/commendTypes';
 

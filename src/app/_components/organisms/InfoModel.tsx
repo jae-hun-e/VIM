@@ -3,7 +3,7 @@ import EditBtn from '@components/molecules/button/EditBtn';
 import DeleteBtn from '@components/molecules/button/DeleteBtn';
 import { useState } from 'react';
 import SaveBtn from '@components/molecules/button/SaveBtn';
-import { cls } from '@utils/util';
+import { cls } from '@utils/utils';
 import { useForm } from 'react-hook-form';
 import { InsertUploadProps } from '@/app/_types/reqestType';
 import { InfoArrProps } from '@/app/_types/commendTypes';

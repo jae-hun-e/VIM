@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Login from '@components/organisms/Login';
 import Logo from '@assets/logo/icon_logo.svg';
 import DescribeImg from '@assets/icon/Icon_describeImg.svg';
-import { cls } from '@utils/util';
+import { cls } from '@utils/utils';
 import { useRouter } from 'next/navigation';
 
 const Register = () => {

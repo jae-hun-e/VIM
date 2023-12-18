@@ -4,7 +4,7 @@ import SaveBtn from '@components/molecules/button/SaveBtn';
 import Link from 'next/link';
 import { infoIP, routerHref } from '@constants/constantsList';
 import { useForm } from 'react-hook-form';
-import { cls } from '@utils/util';
+import { cls } from '@utils/utils';
 import { InsertUploadProps } from '@/app/_types/reqestType';
 import { validatedIpAddress, validatedMACAddress } from '@utils/validation';
 import { useMutation } from '@tanstack/react-query';

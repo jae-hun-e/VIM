@@ -23,7 +23,7 @@ interface MappingOptions<T> {
   value: keyof T;
   data: T[] | undefined;
 }
-export const mapping = <T,>({ keyword, value, data }: MappingOptions<T>) => {
+export const mapping = <T>({ keyword, value, data }: MappingOptions<T>) => {
   if (!data) return;
   return data.reduce(
     (a, b) => {

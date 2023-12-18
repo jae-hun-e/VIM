@@ -1,6 +1,6 @@
 import BtnUpload from '@assets/btn/btn_upload.svg';
 import { BtnProps } from '@/app/_types/commendTypes';
-import { cls } from '@utils/util';
+import { cls } from '@utils/utils';
 
 const UploadBtn = ({ className = '' }: BtnProps) => {
   return (

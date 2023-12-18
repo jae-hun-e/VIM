@@ -1,4 +1,4 @@
-import { cls } from '@utils/util';
+import { cls } from '@utils/utils';
 
 interface IRegisterHeader {
   onClickTag: (arg: string) => void;

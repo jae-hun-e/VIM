@@ -1,6 +1,6 @@
 'use client';
 import { useForm } from 'react-hook-form';
-import { cls, pageNation } from '@utils/util';
+import { cls, pageNation } from '@utils/utils';
 import SaveBtn from '@components/molecules/button/SaveBtn';
 import FloorIPSetting from '@components/organisms/FloorIPSetting';
 import { useEffect, useState } from 'react';
@@ -22,11 +22,7 @@ export interface DefaultSettingState {
 const AdminPage = () => {
   const [curPage, setCurPage] = useState<number>(0);
   const [isSetup, setIsSetup] = useRecoilState(isDefaultSetup);
-  const {
-    data: adminConfigRes,
-    isError,
-    error
-  } = useQuery({ queryKey: [getAdminInfo], queryFn: getAdminInfo });
+  const { data: adminConfigRes } = useQuery({ queryKey: [getAdminInfo], queryFn: getAdminInfo });
   const { mutateAsync: configMutate } = useMutation({
     mutationKey: [patchAdminConfig],
     mutationFn: patchAdminConfig
@@ -69,9 +65,8 @@ const AdminPage = () => {
     for (const { type } of defaultSettingState) {
       configReq.keys.push({ key: type, value: data[type] });
     }
-    console.log('configReq', configReq);
-    const configRes = await configMutate(configReq);
-    console.log('configRes', configRes);
+
+    await configMutate(configReq);
 
     const floorReq = { floors: [] } as AdminFloor;
     for (let i = 1; i <= totalFloor; i++) {
@@ -81,10 +76,8 @@ const AdminPage = () => {
         endIpAddress: data[`admin_floor_end_ip_address_${i}F`]
       });
     }
-    console.log('floorReq', floorReq);
-    const floorRes = floorMutate(floorReq);
-    console.log('floorRes', floorRes);
 
+    floorMutate(floorReq);
     setIsSetup(true);
   };
 

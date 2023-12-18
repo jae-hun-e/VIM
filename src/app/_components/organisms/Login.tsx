@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import AIM from '@assets/logo/Icon_AIM.svg';
 import LoginIcon from '@assets/btn/btn_login.svg';
 import LoginOffIcon from '@assets/btn/btn_login_off.svg';
-import { cls } from '@utils/util';
+import { cls } from '@utils/utils';
 import { useMutation } from '@tanstack/react-query';
 import { postLogin } from '@services/post/postFormData';
 import { LoginFormProps } from '@/app/_types/reqestType';
