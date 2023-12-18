@@ -1,5 +1,5 @@
 import BtnDelete from '@assets/btn/btn_delete.svg';
-import { BtnProps } from '@customTypes/commendTypes';
+import { BtnProps } from '@/app/_types/commendTypes';
 
 const DeleteBtn = ({ className, onClick }: BtnProps) => {
   return (

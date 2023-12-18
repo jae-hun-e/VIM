@@ -1,7 +1,7 @@
 'use client';
 import { useForm } from 'react-hook-form';
-import SearchBtn from '@components/molecules/SearchBtn';
-import DropBox from '@components/molecules/DropBox';
+import SearchBtn from '@components/molecules/button/SearchBtn';
+import DropBox from '@components/molecules/common/DropBox';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getSearchList } from '@services/get/getResponse';

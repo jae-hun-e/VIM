@@ -1,6 +1,6 @@
 import Box from '@components/atoms/Box';
 import SearchBar from '@components/organisms/SearchBar';
-import SearchList from '@components/molecules/SearchList';
+import SearchList from '@components/molecules/list/SearchList';
 
 const FindInfo = () => {
   return (

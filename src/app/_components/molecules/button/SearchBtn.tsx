@@ -1,5 +1,5 @@
 import BtnSearch from '@assets/icon/icon_search.svg';
-import { BtnProps } from '@customTypes/commendTypes';
+import { BtnProps } from '@/app/_types/commendTypes';
 import { cls } from '@utils/util';
 
 const SearchBtn = ({ className = '', onClick, type = 'submit' }: BtnProps) => {

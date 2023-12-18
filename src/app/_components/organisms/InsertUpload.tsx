@@ -1,6 +1,6 @@
 'use client';
 import Box from '@components/atoms/Box';
-import SaveBtn from '@components/molecules/SaveBtn';
+import SaveBtn from '@components/molecules/button/SaveBtn';
 import Link from 'next/link';
 import { infoIP, routerHref } from '@constants/constantsList';
 import { useForm } from 'react-hook-form';

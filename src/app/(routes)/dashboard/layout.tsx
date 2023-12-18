@@ -1,4 +1,4 @@
-import SideBar from '@components/molecules/SideBar';
+import SideBar from '@components/molecules/common/SideBar';
 import { ReactNode } from 'react';
 import RecoilRootProvider from '@stores/RecoilRootProvider';
 const DashBoardLayout = ({ children }: { children: ReactNode }) => {

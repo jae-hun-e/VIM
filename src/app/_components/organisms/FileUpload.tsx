@@ -1,7 +1,7 @@
 import Box from '@components/atoms/Box';
 import Link from 'next/link';
 import { routerHref } from '@constants/constantsList';
-import ExcelFile from '@components/molecules/ExcelFile';
+import ExcelFile from '@components/molecules/upload/ExcelFile';
 
 const FileUpload = () => {
   return (

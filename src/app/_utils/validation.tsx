@@ -5,7 +5,8 @@ export const validatedIpAddress = (ipAddress: string) => {
   return ipRegex.test(ipAddress);
 };
 
-// 00:1A:2B:3C:4D:5E
+// 00:1A
+// :2B:3C:4D:5E
 export const validatedMACAddress = (macAddress: string) => {
   const macRegex = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/;
   return macRegex.test(macAddress);

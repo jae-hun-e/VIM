@@ -1,5 +1,5 @@
 import BtnBack from '@assets/icon/icon_arrow_back.svg';
-import { BtnProps } from '@customTypes/commendTypes';
+import { BtnProps } from '@/app/_types/commendTypes';
 import Link from 'next/link';
 
 interface BackBtnProps extends BtnProps {

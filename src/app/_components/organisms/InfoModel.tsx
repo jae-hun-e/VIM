@@ -1,8 +1,8 @@
-import Model from '@components/molecules/Model';
-import EditBtn from '@components/molecules/EditBtn';
-import DeleteBtn from '@components/molecules/DeleteBtn';
+import Model from '@components/molecules/common/Model';
+import EditBtn from '@components/molecules/button/EditBtn';
+import DeleteBtn from '@components/molecules/button/DeleteBtn';
 import { useState } from 'react';
-import SaveBtn from '@components/molecules/SaveBtn';
+import SaveBtn from '@components/molecules/button/SaveBtn';
 import { cls } from '@utils/util';
 import { useForm } from 'react-hook-form';
 import { InsertUploadProps } from '@/app/_types/reqestType';

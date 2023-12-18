@@ -9,3 +9,18 @@
 ### recoil setting
 - RecoilRoot로 컴포넌트 트리 래핑 ( ProviderRecoil.tsx )
 
+## 기능 명세
+
+### 초기 화면
+- 
+
+### 관리 페이지
+
+### 할당 IP
+
+### IP 현황
+
+### IP 관리
+
+
+

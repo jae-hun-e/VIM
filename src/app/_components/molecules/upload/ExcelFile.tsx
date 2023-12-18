@@ -1,10 +1,10 @@
 'use client';
-import UploadBtn from '@components/molecules/UploadBtn';
+import UploadBtn from '@components/molecules/button/UploadBtn';
 import { ChangeEvent, useEffect } from 'react';
 import useReadExcel from '@hooks/useReadExcel';
 import { useMutation } from '@tanstack/react-query';
 import { postFileUploadIP } from '@services/post/postFormData';
-import SaveBtn from '@components/molecules/SaveBtn';
+import SaveBtn from '@components/molecules/button/SaveBtn';
 
 const ExcelFile = () => {
   const { data, readExcel } = useReadExcel();
