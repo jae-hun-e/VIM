@@ -43,9 +43,9 @@ const Structural = () => {
       {isLoading ? (
         <div>로딩중...</div>
       ) : tab === statusTabList[0].title ? (
-        <IPByFloor list={statusList.data} />
+        statusList?.data && <IPByFloor list={statusList.data} />
       ) : (
-        <IPByDepartment list={statusList.data} />
+        statusList?.data && <IPByDepartment list={statusList && statusList.data} />
       )}
     </Box>
   );

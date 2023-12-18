@@ -3,7 +3,8 @@ import {
   ResponseAdminConfig,
   ResponsePeople,
   ResponseRemainIP,
-  ResponseType
+  ResponseType,
+  StatusList
 } from '@/app/_types/ResponseType';
 import { SearchProps } from '@/app/_types/reqestType';
 
@@ -24,21 +25,21 @@ interface AddressProps {
   type: string;
 }
 export async function getAddress({ type }: AddressProps) {
-  const response = await client.get(`/address`, {
+  const res = await client.get<ResponseType<StatusList>>(`/address`, {
     params: { type }
   });
-
-  return response.data;
+  console.log('res-getAddress', res);
+  return res.data;
 }
 
 export async function getSearchList({ keyword, value }: SearchProps) {
-  const response = await client.get<ResponseType<ResponsePeople[]>>('/address/search', {
+  const res = await client.get<ResponseType<ResponsePeople[]>>('/address/search', {
     params: {
       keyword,
       value
     }
   });
-  console.log('res-search', response);
+  console.log('res-search', res);
 
-  return response.data;
+  return res.data;
 }

@@ -9,6 +9,7 @@ export async function postLogin(data: LoginFormProps) {
 
 export async function postAdminFloor(data: AdminFloor) {
   const res = await client.post<ResponseType<ResponseAdminConfig>>(`/admin/floor`, data);
+  console.log('res-postAdminFloor', res);
   return res.data;
 }
 
