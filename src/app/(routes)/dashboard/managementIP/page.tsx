@@ -1,15 +1,15 @@
 'use client';
 import SearchBar from '@components/organisms/SearchBar';
 import Box from '@components/atoms/Box';
-import SearchList from '@components/molecules/SearchList';
+import SearchList from '@components/molecules/list/SearchList';
 import { Layout } from '@/app/_types/commendTypes';
 import InfoModel from '@components/organisms/InfoModel';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { selectedPeople } from '@stores/atoms';
 import { useEffect, useState } from 'react';
 
 const ManagementIP = () => {
-  const selected = useRecoilValue(selectedPeople);
+  const [selected, setSelected] = useRecoilState(selectedPeople);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -18,6 +18,7 @@ const ManagementIP = () => {
 
   const handleCloseModel = () => {
     setVisible(!visible);
+    setSelected({ idx: null, info: null });
   };
 
   return (

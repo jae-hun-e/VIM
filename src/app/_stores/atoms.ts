@@ -15,13 +15,13 @@ export const searchList = atom<ResponsePeople[] | null>({
 });
 
 interface SelectedProps {
-  idx: number;
+  idx: number | null;
   info: ResponsePeople | null;
 }
 export const selectedPeople = atom<SelectedProps>({
   key: 'selectedPeople',
   default: {
-    idx: 0,
+    idx: null,
     info: null
   }
 });
