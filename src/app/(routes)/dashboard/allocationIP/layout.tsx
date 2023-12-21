@@ -4,11 +4,9 @@ import Link from 'next/link';
 import { routerHref } from '@constants/constantsList';
 
 const AllocationIPLayout = ({
-  children,
   fileUpload,
   insertUpload
 }: {
-  children: ReactNode;
   fileUpload: ReactNode;
   insertUpload: ReactNode;
 }) => {

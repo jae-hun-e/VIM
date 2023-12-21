@@ -1,9 +1,9 @@
 import SkeletonLoader from '@components/molecules/common/SkeletonLoader';
 
-const StatusIPLoading = () => {
+const FindInfoLoading = () => {
   return (
-    <SkeletonLoader className="w-full h-full p-2">
-      <SkeletonLoader.Box repeat={4} className="flex flex-col gap-4 overflow-hidden">
+    <SkeletonLoader className="w-full p-2">
+      <SkeletonLoader.Box repeat={6} className="flex flex-col gap-4 overflow-hidden">
         <SkeletonLoader.Box repeat={2} className="flex gap-4 overflow-hidden">
           <SkeletonLoader.Profile className="min-w-[60px] min-h-[60px]" />
           <div className="flex flex-col justify-center w-full gap-3">
@@ -19,4 +19,4 @@ const StatusIPLoading = () => {
   );
 };
 
-export default StatusIPLoading;
+export default FindInfoLoading;

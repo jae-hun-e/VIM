@@ -10,9 +10,7 @@ interface ParentsProps extends Style {
 }
 const Container = ({ children, className = 'w-full h-full' }: ParentsProps) => {
   return (
-    <div className={cls('shadow rounded-md p-4 mx-auto animate-pulse bg-gray-2', className)}>
-      {children}
-    </div>
+    <div className={cls('shadow rounded-md p-4 mx-auto animate-pulse', className)}>{children}</div>
   );
 };
 
