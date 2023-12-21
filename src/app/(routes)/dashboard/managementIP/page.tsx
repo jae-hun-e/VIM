@@ -1,6 +1,4 @@
 'use client';
-import SearchBar from '@components/organisms/SearchBar';
-import Box from '@components/atoms/Box';
 import SearchList from '@components/molecules/list/SearchList';
 import { Layout } from '@/app/_types/commendTypes';
 import InfoModel from '@components/organisms/InfoModel';
@@ -22,11 +20,10 @@ const ManagementIP = () => {
   };
 
   return (
-    <Box className="flex flex-col w-full min-h-[50vh] max-h-[90vh] pt-0 gap-[32px] ">
-      <SearchBar />
+    <>
       <SearchList layOut={Layout.grid} />
       {visible && <InfoModel info={selected.info} visible={visible} onClose={handleCloseModel} />}
-    </Box>
+    </>
   );
 };
 export default ManagementIP;

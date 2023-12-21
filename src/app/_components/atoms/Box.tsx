@@ -7,7 +7,7 @@ interface BoxProps extends AtomProps {
 const Box = ({ className = '', children, onClick }: BoxProps) => {
   return (
     <article
-      className={cls(className, 'rounded-xl p-[32px] bg-white overflow-auto custom-scroll')}
+      className={cls('rounded-xl p-[32px] bg-white overflow-auto custom-scroll', className)}
       onClick={onClick}>
       {children}
     </article>
