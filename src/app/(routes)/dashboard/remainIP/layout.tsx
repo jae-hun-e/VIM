@@ -5,7 +5,7 @@ import { routerHref } from '@constants/constantsList';
 
 const RemainIPLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <Box className="w-full h-full">
+    <Box className="w-full h-full box-border">
       <header className="flex gap-[24px] items-center mb-[40px]">
         <BackBtn onBackHref={routerHref.allocationIP} />
         <p className="text-[24px]">잔여 IP</p>

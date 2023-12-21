@@ -20,7 +20,7 @@ const RemainIP = () => {
   console.log(floorList);
 
   return (
-    <div>
+    <>
       {floorList ? (
         Object.keys(floorList).map((floor) => {
           return (
@@ -37,7 +37,7 @@ const RemainIP = () => {
       ) : (
         <div>데이터가 없습니다. </div>
       )}
-    </div>
+    </>
   );
 };
 

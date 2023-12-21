@@ -5,7 +5,7 @@ export const APP_TITLE = '비비아이피병원';
 export const routerHref = {
   admin: '/dashboard/admin',
   allocationIP: '/dashboard/allocationIP',
-  remainIP: '/dashboard/allocationIP/remainIP',
+  remainIP: '/dashboard/remainIP',
   statusIP: '/dashboard/statusIP',
   managementIP: '/dashboard/managementIP'
 };
