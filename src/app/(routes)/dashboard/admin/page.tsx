@@ -1,9 +1,9 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { useRecoilState } from 'recoil';
+
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import EditBtn from '@components/molecules/button/EditBtn';
 import LeftArrowBtn from '@components/molecules/button/LeftArrowBtn';
@@ -33,7 +33,8 @@ const AdminPage = () => {
   const [isSetup, setIsSetup] = useRecoilState(isDefaultSetup);
   const { data: adminConfigRes } = useQuery({
     queryKey: [getAdminInfo],
-    queryFn: getAdminInfo
+    queryFn: getAdminInfo,
+    enabled: !!getAdminInfo
   });
   const { mutateAsync: configMutate } = useMutation({
     mutationKey: [patchAdminConfig],
@@ -44,8 +45,14 @@ const AdminPage = () => {
     mutationFn: postAdminFloor
   });
 
-  const { register, handleSubmit, setError, watch, setValue } =
-    useForm<DefaultSettingState>();
+  const {
+    register,
+    handleSubmit,
+    setError,
+    watch,
+    setValue,
+    formState: { errors }
+  } = useForm<DefaultSettingState>();
 
   const totalFloor = Number(watch('admin_floor'));
   const floorPages: number[][] = pageNation(totalFloor);
@@ -59,43 +66,49 @@ const AdminPage = () => {
     }
   }, [adminConfigRes]);
 
+  const toggleSetup = () => setIsSetup(!isSetup);
+
   const handleSubmitAdminConfig = async (data: DefaultSettingState) => {
-    if (!validatedIpAddress(data.ipAddress)) {
+    if (!validatedIpAddress(data.admin_gateway)) {
       setError(
-        'ipAddress',
+        'admin_gateway',
         { type: 'custom', message: 'ip주소값이 잘못 되었습니다.' },
         { shouldFocus: true }
       );
       return;
     }
-    if (!validatedMACAddress(data.macAddress)) {
+
+    if (
+      !validatedScopeIPAddress(
+        data.admin_startIpAddress,
+        data.admin_endIpAddress
+      )
+    ) {
       setError(
-        'macAddress',
-        { type: 'custom', message: 'mac주소값이 잘못 되었습니다.' },
+        'admin_startIpAddress',
+        { type: 'custom', message: 'ip주소값이 잘못 되었습니다.' },
         { shouldFocus: true }
       );
       return;
     }
-
     const configReq = { keys: [] } as AdminConfig;
 
     for (const { type } of defaultSettingState) {
       configReq.keys.push({ key: type, value: data[type] });
     }
-
     await configMutate(configReq);
 
     const floorReq = { floors: [] } as AdminFloor;
     for (let i = 1; i <= totalFloor; i++) {
       if (
-        validatedScopeIPAddress(
+        !validatedScopeIPAddress(
           data[`admin_floor_start_ip_address_${i}F`],
           data[`admin_floor_end_ip_address_${i}F`]
         )
       ) {
         setError(
           `admin_floor_start_ip_address_${i}F`,
-          { type: 'custom', message: 'ipAddress값이 잘못 되었습니다.' },
+          { type: 'custom', message: `${i}F ipAddress값이 잘못 되었습니다.` },
           { shouldFocus: true }
         );
         return;
@@ -109,7 +122,7 @@ const AdminPage = () => {
     }
 
     floorMutate(floorReq);
-    setIsSetup(true);
+    toggleSetup();
   };
 
   return (
@@ -157,7 +170,7 @@ const AdminPage = () => {
 
       <div className="flex justify-end">
         {isSetup ? (
-          <EditBtn onClick={() => setIsSetup(!isSetup)} />
+          <EditBtn onClick={toggleSetup} />
         ) : (
           <SaveBtn
             disabled={onSaveBtn<DefaultSettingState, DefaultSettingStateProps>({
@@ -169,6 +182,7 @@ const AdminPage = () => {
           />
         )}
       </div>
+      {errors && Object.keys(errors).map((key) => errors[key]?.message)}
     </form>
   );
 };

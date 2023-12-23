@@ -5,7 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d94d011-eaaf-4ea6-90e1-9140c0f23e2d" name="변경" comment="[Fixed] managementIP에서 나갔다 와도 데이터가 남아있는 error &#10;&#10;SideBar.tsx에서 탭 이동 시 searchList atom 비우는 식으로 해결">
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/admin/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/admin/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/admin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/admin/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/@fileUpload/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/@fileUpload/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/@insertUpload/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/@insertUpload/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/managementIP/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/managementIP/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/remainIP/error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/remainIP/error.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/statusIP/@structural/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/statusIP/@structural/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(routes)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(routes)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_components/molecules/common/DropBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/molecules/common/DropBox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_components/molecules/common/SideBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/molecules/common/SideBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_components/organisms/InfoModel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/organisms/InfoModel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_components/organisms/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/organisms/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_components/organisms/SearchBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/organisms/SearchBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_hooks/useCheckPath.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_hooks/useCheckPath.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_hooks/useClickAway.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_hooks/useClickAway.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_hooks/useReadExcel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_hooks/useReadExcel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_services/common/Hydrated.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/common/Hydrated.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_services/common/ProviderReactQuery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/common/ProviderReactQuery.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_services/common/createAxios.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/common/createAxios.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_services/common/customError.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/common/customError.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_services/common/getQueryClient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/common/getQueryClient.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_stores/RecoilRootProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_stores/RecoilRootProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/_utils/activation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_utils/activation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +163,7 @@
       <workItem from="1703120022060" duration="21208000" />
       <workItem from="1703149795502" duration="189000" />
       <workItem from="1703302112174" duration="4967000" />
-      <workItem from="1703307254767" duration="10881000" />
+      <workItem from="1703307254767" duration="16539000" />
     </task>
     <task id="LOCAL-00001" summary="[setting] 초기 세팅 + react-query SSR 세팅">
       <option name="closed" value="true" />

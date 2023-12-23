@@ -19,14 +19,14 @@
         "groups": ["type", "builtin", "external", "internal", "parent", "unknown"],
         "pathGroups": [
           {
-            "pattern": "react*",
+            "pattern": "next*",
             "group": "external",
             "position": "before"
           },
           {
-            "pattern": "next*",
+            "pattern": "react*",
             "group": "external",
-            "position": "before"
+            "position": "after"
           },
           {
             "pattern": "@/*",

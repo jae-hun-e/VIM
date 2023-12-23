@@ -1,4 +1,4 @@
-import { FieldValues, UseFormWatch } from 'react-hook-form';
+import { FieldValues, Path, UseFormWatch } from 'react-hook-form';
 
 interface onSaveBtnProps<T extends FieldValues, K extends FieldValues> {
   watch: UseFormWatch<T>;
@@ -18,10 +18,9 @@ export const onSaveBtn = <T extends FieldValues, K extends FieldValues>({
   if (totalFloor) {
     for (let i = 1; i <= totalFloor; i++) {
       if (
-        // @ts-ignore
         !(
-          watch(`admin_floor_end_ip_address_${i}F`) &&
-          watch(`admin_floor_start_ip_address_${i}F`)
+          watch(`admin_floor_end_ip_address_${i}F` as Path<T>) &&
+          watch(`admin_floor_start_ip_address_${i}F` as Path<T>)
         )
       )
         return false;

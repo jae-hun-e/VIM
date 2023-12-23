@@ -1,8 +1,8 @@
 'use client';
-import { ClientError, ServerError } from '@services/common/customError';
+// import { ClientError, ServerError } from '@services/common/customError';
 
 interface ErrorUIProps {
-  error: ClientError | ServerError;
+  error: Error;
   reset: () => void;
 }
 

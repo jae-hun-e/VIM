@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-
 import Link from 'next/link';
+
+import { ReactNode } from 'react';
 
 import Box from '@components/atoms/Box';
 import { routerHref } from '@constants/constantsList';

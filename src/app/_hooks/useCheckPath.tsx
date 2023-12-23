@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction, useEffect } from 'react';
-
 import { usePathname } from 'next/navigation';
 import { useRecoilState } from 'recoil';
+
+import { Dispatch, SetStateAction, useEffect } from 'react';
 
 import { currentPath } from '@stores/atoms';
 

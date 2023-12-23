@@ -1,8 +1,7 @@
 'use client';
+import { useRouter } from 'next/navigation';
 
 import { useState } from 'react';
-
-import { useRouter } from 'next/navigation';
 
 import DescribeImg from '@assets/icon/Icon_describeImg.svg';
 import Logo from '@assets/logo/icon_logo.svg';

@@ -1,7 +1,7 @@
 'use client';
-import { useEffect, useState } from 'react';
-
 import { useRecoilState } from 'recoil';
+
+import { useEffect, useState } from 'react';
 
 import SearchList from '@components/molecules/list/SearchList';
 import InfoModel from '@components/organisms/InfoModel';

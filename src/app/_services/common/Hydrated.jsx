@@ -1,15 +1,14 @@
-import React from 'react';
-
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 
-import { getData } from './getData';
+import React from 'react';
+
 import getQueryClient from './getQueryClient';
 
-export default async function Hydrated({ children, queryKey }) {
+export default async function Hydrated({ children, queryKey, fetchFn }) {
   const queryClient = getQueryClient();
   await queryClient.prefetchQuery({
     queryKey: [queryKey],
-    queryFn: getData
+    queryFn: fetchFn
   });
   const dehydratedState = dehydrate(queryClient);
 

@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction } from 'react';
-
 import { Listbox } from '@headlessui/react';
+
+import { Dispatch, SetStateAction } from 'react';
 
 import { dropBoxList } from '@constants/constantsList';
 import { SelectedProps } from '@customTypes/commendTypes';
