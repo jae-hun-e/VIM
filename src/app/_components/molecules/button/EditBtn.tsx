@@ -1,5 +1,5 @@
 import BtnEdit from '@assets/btn/btn_edit.svg';
-import { BtnProps } from '@/app/_types/commendTypes';
+import { BtnProps } from '@customTypes/commendTypes';
 
 const EditBtn = ({ className, onClick }: BtnProps) => {
   return (

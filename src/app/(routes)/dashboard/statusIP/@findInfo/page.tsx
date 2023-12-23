@@ -1,5 +1,5 @@
-import SearchBar from '@components/organisms/SearchBar';
 import SearchList from '@components/molecules/list/SearchList';
+import SearchBar from '@components/organisms/SearchBar';
 
 const FindInfo = () => {
   return (

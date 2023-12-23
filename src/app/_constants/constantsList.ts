@@ -1,4 +1,4 @@
-import { InfoIPProps } from '@/app/_types/commendTypes';
+import { InfoIPProps } from '@customTypes/commendTypes';
 
 export const APP_TITLE = '비비아이피병원';
 
@@ -12,9 +12,19 @@ export const routerHref = {
 
 export const constantsList = [
   { id: 1, href: routerHref.admin, title: 'admin', value: '관리 페이지' },
-  { id: 2, href: routerHref.allocationIP, title: 'allocationIP', value: '할당 IP' },
+  {
+    id: 2,
+    href: routerHref.allocationIP,
+    title: 'allocationIP',
+    value: '할당 IP'
+  },
   { id: 3, href: routerHref.statusIP, title: 'statusIP', value: 'IP 현황' },
-  { id: 4, href: routerHref.managementIP, title: 'managementIP', value: 'IP 관리' }
+  {
+    id: 4,
+    href: routerHref.managementIP,
+    title: 'managementIP',
+    value: 'IP 관리'
+  }
 ];
 
 export const defaultSettingState = [

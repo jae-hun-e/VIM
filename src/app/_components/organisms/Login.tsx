@@ -1,14 +1,16 @@
 import { useForm } from 'react-hook-form';
+
+import { useMutation } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
-import AIM from '@assets/logo/Icon_AIM.svg';
+
 import LoginIcon from '@assets/btn/btn_login.svg';
 import LoginOffIcon from '@assets/btn/btn_login_off.svg';
-import { cls } from '@utils/utils';
-import { useMutation } from '@tanstack/react-query';
+import AIM from '@assets/logo/Icon_AIM.svg';
+import { LoginFormProps } from '@customTypes/reqestType';
+import { ResponseType, ResponseLogin } from '@customTypes/ResponseType';
 import { postLogin } from '@services/post/postFormData';
-import { LoginFormProps } from '@/app/_types/reqestType';
-import { AxiosError } from 'axios';
-import { ResponseType, ResponseLogin } from '@/app/_types/ResponseType';
+import { cls } from '@utils/utils';
 
 const Login = () => {
   const {
@@ -48,7 +50,9 @@ const Login = () => {
   return (
     <article className="flex flex-col items-center justify-center text-black w-[961px] h-[685px] rounded-[48px] bg-white shadow-lg">
       <AIM width="145px" height="97px" />
-      <form onSubmit={handleSubmit((data) => mutate(data))} className="flex flex-col gap-[8px]">
+      <form
+        onSubmit={handleSubmit((data) => mutate(data))}
+        className="flex flex-col gap-[8px]">
         <label htmlFor="username">ID</label>
         <input
           id="username"
@@ -57,7 +61,9 @@ const Login = () => {
           {...register('username')}
           className={cls(
             'w-[521px] h-[51px] rounded-[24px] px-[20px]',
-            errors?.username ? 'border-[1px] border-red-500 bg-fail-2' : 'bg-gray-2'
+            errors?.username
+              ? 'border-[1px] border-red-500 bg-fail-2'
+              : 'bg-gray-2'
           )}
         />
         <label htmlFor="password">Password</label>
@@ -68,11 +74,16 @@ const Login = () => {
           {...register('password')}
           className={cls(
             'w-[521px] h-[51px] rounded-[24px] px-[20px]',
-            errors?.password ? 'border-[1px] border-red-500 bg-fail-2' : 'bg-gray-2'
+            errors?.password
+              ? 'border-[1px] border-red-500 bg-fail-2'
+              : 'bg-gray-2'
           )}
         />
 
-        <button type="submit" className="flex justify-center mt-[48px]" disabled={!onLogin()}>
+        <button
+          type="submit"
+          className="flex justify-center mt-[48px]"
+          disabled={!onLogin()}>
           {onLogin() ? <LoginIcon /> : <LoginOffIcon />}
         </button>
 

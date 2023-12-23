@@ -3,7 +3,9 @@ import SkeletonLoader from '@components/molecules/common/SkeletonLoader';
 const RemainIPLoading = () => {
   return (
     <SkeletonLoader className="p-2 w-full h-full">
-      <SkeletonLoader.Box repeat={4} className="flex flex-col gap-[80px] overflow-hidden">
+      <SkeletonLoader.Box
+        repeat={4}
+        className="flex flex-col gap-[80px] overflow-hidden">
         <SkeletonLoader.Box className="flex gap-4 ">
           <SkeletonLoader.Profile className="w-[40px] h-[40px]" />
           <SkeletonLoader.Box className="flex flex-col w-full gap-3">

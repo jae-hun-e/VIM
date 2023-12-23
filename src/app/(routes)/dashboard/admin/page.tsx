@@ -1,22 +1,27 @@
 'use client';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { cls, pageNation } from '@utils/utils';
+
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { useRecoilState } from 'recoil';
+
+import EditBtn from '@components/molecules/button/EditBtn';
+import LeftArrowBtn from '@components/molecules/button/LeftArrowBtn';
+import RightArrowBtn from '@components/molecules/button/RightArrowBtn';
 import SaveBtn from '@components/molecules/button/SaveBtn';
 import FloorIPSetting from '@components/organisms/FloorIPSetting';
-import { useEffect, useState } from 'react';
-import RightArrowBtn from '@components/molecules/button/RightArrowBtn';
-import LeftArrowBtn from '@components/molecules/button/LeftArrowBtn';
 import { defaultSettingState } from '@constants/constantsList';
-import { useRecoilState } from 'recoil';
-import { isDefaultSetup } from '@stores/atoms';
-import EditBtn from '@components/molecules/button/EditBtn';
+import {
+  DefaultSettingState,
+  DefaultSettingStateProps
+} from '@customTypes/commendTypes';
+import { AdminConfig, AdminFloor } from '@customTypes/reqestType';
 import { getAdminInfo } from '@services/get/getResponse';
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { postAdminFloor } from '@services/post/postFormData';
 import { patchAdminConfig } from '@services/patch/patchInfo';
-import { AdminConfig, AdminFloor } from '@/app/_types/reqestType';
+import { postAdminFloor } from '@services/post/postFormData';
+import { isDefaultSetup } from '@stores/atoms';
 import { onSaveBtn } from '@utils/activation';
-import { DefaultSettingState, DefaultSettingStateProps } from '@/app/_types/commendTypes';
+import { cls, pageNation } from '@utils/utils';
 import {
   validatedIpAddress,
   validatedMACAddress,
@@ -26,7 +31,10 @@ import {
 const AdminPage = () => {
   const [curPage, setCurPage] = useState<number>(0);
   const [isSetup, setIsSetup] = useRecoilState(isDefaultSetup);
-  const { data: adminConfigRes } = useQuery({ queryKey: [getAdminInfo], queryFn: getAdminInfo });
+  const { data: adminConfigRes } = useQuery({
+    queryKey: [getAdminInfo],
+    queryFn: getAdminInfo
+  });
   const { mutateAsync: configMutate } = useMutation({
     mutationKey: [patchAdminConfig],
     mutationFn: patchAdminConfig
@@ -36,7 +44,8 @@ const AdminPage = () => {
     mutationFn: postAdminFloor
   });
 
-  const { register, handleSubmit, setError, watch, setValue } = useForm<DefaultSettingState>();
+  const { register, handleSubmit, setError, watch, setValue } =
+    useForm<DefaultSettingState>();
 
   const totalFloor = Number(watch('admin_floor'));
   const floorPages: number[][] = pageNation(totalFloor);
@@ -130,12 +139,20 @@ const AdminPage = () => {
 
       <article className="w-full flex justify-center">
         {totalFloor > 4 && curPage > 0 && (
-          <LeftArrowBtn className="pb-[72px]" onClick={() => setCurPage(curPage - 1)} />
+          <LeftArrowBtn
+            className="pb-[72px]"
+            onClick={() => setCurPage(curPage - 1)}
+          />
         )}
-        {watch('admin_floor') && FloorIPSetting({ page: floorPages[curPage], register, isSetup })}
-        {totalFloor > 4 && curPage < Math.ceil(Number(watch('admin_floor')) / 4) - 1 && (
-          <RightArrowBtn className="pb-[72px]" onClick={() => setCurPage(curPage + 1)} />
-        )}
+        {watch('admin_floor') &&
+          FloorIPSetting({ page: floorPages[curPage], register, isSetup })}
+        {totalFloor > 4 &&
+          curPage < Math.ceil(Number(watch('admin_floor')) / 4) - 1 && (
+            <RightArrowBtn
+              className="pb-[72px]"
+              onClick={() => setCurPage(curPage + 1)}
+            />
+          )}
       </article>
 
       <div className="flex justify-end">

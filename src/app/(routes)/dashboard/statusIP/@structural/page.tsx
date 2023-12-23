@@ -1,12 +1,14 @@
 'use client';
-import { statusTabList } from '@constants/constantsList';
-import { cls } from '@utils/utils';
 import { useState } from 'react';
-import IPByFloor from '@components/organisms/IPByFloor';
-import IPByDepartment from '@components/organisms/IPByDepartment';
+
 import { useQuery } from '@tanstack/react-query';
-import { getAddress } from '@services/get/getResponse';
+
 import FindInfoLoading from '@/app/(routes)/dashboard/statusIP/@findInfo/loading';
+import IPByDepartment from '@components/organisms/IPByDepartment';
+import IPByFloor from '@components/organisms/IPByFloor';
+import { statusTabList } from '@constants/constantsList';
+import { getAddress } from '@services/get/getResponse';
+import { cls } from '@utils/utils';
 
 const Structural = () => {
   const [tab, setTab] = useState(statusTabList[0].title);
@@ -45,7 +47,9 @@ const Structural = () => {
       ) : tab === statusTabList[0].title ? (
         statusList?.data && <IPByFloor list={statusList.data} />
       ) : (
-        statusList?.data && <IPByDepartment list={statusList && statusList.data} />
+        statusList?.data && (
+          <IPByDepartment list={statusList && statusList.data} />
+        )
       )}
     </>
   );

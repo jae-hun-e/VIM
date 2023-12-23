@@ -1,5 +1,5 @@
 import BtnOk from '@assets/btn/btn_popup_ok.svg';
-import { BtnProps } from '@/app/_types/commendTypes';
+import { BtnProps } from '@customTypes/commendTypes';
 
 const OkBtn = ({ className, onClick }: BtnProps) => {
   return (

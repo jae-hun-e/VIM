@@ -14,7 +14,9 @@ export class ServerError extends Error {
   }
 }
 
-export async function errorBoundary<T>(req: Promise<AxiosResponse>): Promise<T> {
+export async function errorBoundary<T>(
+  req: Promise<AxiosResponse>
+): Promise<T> {
   try {
     const res = await req;
     return res.data;

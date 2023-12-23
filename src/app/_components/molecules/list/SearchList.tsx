@@ -1,11 +1,12 @@
 'use client';
-import Box from '@components/atoms/Box';
-import { cls } from '@utils/utils';
-import { Layout } from '@/app/_types/commendTypes';
 import Link from 'next/link';
-import { routerHref } from '@constants/constantsList';
 import { useRecoilState, useRecoilValue } from 'recoil';
+
+import Box from '@components/atoms/Box';
+import { routerHref } from '@constants/constantsList';
+import { Layout } from '@customTypes/commendTypes';
 import { searchList, selectedPeople } from '@stores/atoms';
+import { cls } from '@utils/utils';
 
 interface SearchListProps {
   layOut?: Layout;

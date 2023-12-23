@@ -1,7 +1,8 @@
 import { useForm } from 'react-hook-form';
+
+import { InfoArrProps } from '@customTypes/commendTypes';
+import { InsertUploadProps } from '@customTypes/reqestType';
 import { cls } from '@utils/utils';
-import { InsertUploadProps } from '@/app/_types/reqestType';
-import { InfoArrProps } from '@/app/_types/commendTypes';
 
 interface PeopleInfoInputProps {
   infoArr: InfoArrProps[];

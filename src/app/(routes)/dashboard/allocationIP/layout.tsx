@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
-import Box from '@components/atoms/Box';
+
 import Link from 'next/link';
+
+import Box from '@components/atoms/Box';
 import { routerHref } from '@constants/constantsList';
 
 const AllocationIPLayout = ({
@@ -28,7 +30,9 @@ const AllocationIPLayout = ({
             잔여 IP 보러가기 &gt;
           </Link>
         </div>
-        <p className="text-[20px] text-gray-4 mt-[16px] mb-[40px]">정보를 입력해주세요</p>
+        <p className="text-[20px] text-gray-4 mt-[16px] mb-[40px]">
+          정보를 입력해주세요
+        </p>
         {insertUpload}
       </Box>
     </section>

@@ -1,7 +1,9 @@
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
-import getQueryClient from './getQueryClient';
-import { getData } from './getData';
 import React from 'react';
+
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+
+import { getData } from './getData';
+import getQueryClient from './getQueryClient';
 
 export default async function Hydrated({ children, queryKey }) {
   const queryClient = getQueryClient();
@@ -11,5 +13,7 @@ export default async function Hydrated({ children, queryKey }) {
   });
   const dehydratedState = dehydrate(queryClient);
 
-  return <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>;
+  return (
+    <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>
+  );
 }

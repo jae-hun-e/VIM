@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { ServerError } from '@services/common/customError';
 
 export const client = axios.create({

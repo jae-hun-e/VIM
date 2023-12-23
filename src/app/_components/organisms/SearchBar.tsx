@@ -1,11 +1,13 @@
 'use client';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+
+import { useQuery } from '@tanstack/react-query';
+import { useSetRecoilState } from 'recoil';
+
 import SearchBtn from '@components/molecules/button/SearchBtn';
 import DropBox from '@components/molecules/common/DropBox';
-import { useEffect, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { getSearchList } from '@services/get/getResponse';
-import { useSetRecoilState } from 'recoil';
 import { searchList } from '@stores/atoms';
 
 // todo custom hook 으로 분리 + 데이터 단순화
@@ -34,7 +36,10 @@ const SearchBar = () => {
 
   const handleSubmitSearch = ({ people }: { people?: string }) => {
     if (!selected.type) {
-      setError('people', { type: 'custom', message: '검색하려는 종류를 선택해주세요.' });
+      setError('people', {
+        type: 'custom',
+        message: '검색하려는 종류를 선택해주세요.'
+      });
       return;
     }
 
@@ -67,7 +72,10 @@ const SearchBar = () => {
           className="bg-gray-2 pl-[20px] pr-[42px] py-[12px] box-border w-full rounded-[67px] "
           {...register('people', { required: true })}
         />
-        <SearchBtn className="absolute right-[13px] top-[32px] bottom-1" type={'submit'} />
+        <SearchBtn
+          className="absolute right-[13px] top-[32px] bottom-1"
+          type={'submit'}
+        />
       </form>
       {errors?.people?.message}
     </>

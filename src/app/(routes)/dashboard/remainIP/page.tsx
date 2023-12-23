@@ -1,8 +1,9 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
+
+import { ResponseRemainIP } from '@customTypes/ResponseType';
 import { getRemainIP } from '@services/get/getResponse';
 import { mapping } from '@utils/utils';
-import { ResponseRemainIP } from '@/app/_types/ResponseType';
 
 const RemainIP = () => {
   const { data: response, isLoading } = useQuery({

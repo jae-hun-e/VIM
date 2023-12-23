@@ -1,9 +1,14 @@
-import { usePathname } from 'next/navigation';
 import { Dispatch, SetStateAction, useEffect } from 'react';
+
+import { usePathname } from 'next/navigation';
 import { useRecoilState } from 'recoil';
+
 import { currentPath } from '@stores/atoms';
 
-type useCheckPathProps = [path: string, setTab: Dispatch<SetStateAction<string>>];
+type useCheckPathProps = [
+  path: string,
+  setTab: Dispatch<SetStateAction<string>>
+];
 
 const useCheckPath = (): useCheckPathProps => {
   // const [path, setPath] = useState<string>(''); // 버버벅

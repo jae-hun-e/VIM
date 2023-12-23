@@ -1,21 +1,23 @@
-import { client } from '@services/common/createAxios';
+import { SearchProps } from '@customTypes/reqestType';
 import {
   ResponseAdminConfig,
   ResponsePeople,
   ResponseRemainIP,
   ResponseType,
   StatusList
-} from '@/app/_types/ResponseType';
-import { SearchProps } from '@/app/_types/reqestType';
+} from '@customTypes/ResponseType';
+import { client } from '@services/common/createAxios';
 
 export async function getAdminInfo() {
-  const res = await client.get<ResponseType<ResponseAdminConfig[]>>(`/admin/config`);
+  const res =
+    await client.get<ResponseType<ResponseAdminConfig[]>>(`/admin/config`);
   console.log('res-getAdminInfo', res);
   return res.data;
 }
 
 export async function getRemainIP() {
-  const res = await client.get<ResponseType<ResponseRemainIP[]>>(`/address/remained`);
+  const res =
+    await client.get<ResponseType<ResponseRemainIP[]>>(`/address/remained`);
   console.log('res-remain', res);
   return res.data;
 }
@@ -33,12 +35,15 @@ export async function getAddress({ type }: AddressProps) {
 }
 
 export async function getSearchList({ keyword, value }: SearchProps) {
-  const res = await client.get<ResponseType<ResponsePeople[]>>('/address/search', {
-    params: {
-      keyword,
-      value
+  const res = await client.get<ResponseType<ResponsePeople[]>>(
+    '/address/search',
+    {
+      params: {
+        keyword,
+        value
+      }
     }
-  });
+  );
   console.log('res-search', res);
 
   return res.data;

@@ -1,5 +1,5 @@
-import Model from '@components/molecules/common/Model';
 import OkBtn from '@components/molecules/button/OkBtn';
+import Model from '@components/molecules/common/Model';
 
 interface FailModelProps {
   openModel: boolean;

@@ -1,14 +1,16 @@
 'use client';
+import { useForm } from 'react-hook-form';
+
+import { useMutation } from '@tanstack/react-query';
+
 import SaveBtn from '@components/molecules/button/SaveBtn';
 import { infoIP } from '@constants/constantsList';
-import { useForm } from 'react-hook-form';
-import { cls } from '@utils/utils';
-import { InsertUploadProps } from '@/app/_types/reqestType';
-import { validatedIpAddress, validatedMACAddress } from '@utils/validation';
-import { useMutation } from '@tanstack/react-query';
+import { InfoIPProps } from '@customTypes/commendTypes';
+import { InsertUploadProps } from '@customTypes/reqestType';
 import { postInsertIP } from '@services/post/postFormData';
 import { onSaveBtn } from '@utils/activation';
-import { InfoIPProps } from '@/app/_types/commendTypes';
+import { cls } from '@utils/utils';
+import { validatedIpAddress, validatedMACAddress } from '@utils/validation';
 
 const InsertUpload = () => {
   const {
@@ -58,7 +60,9 @@ const InsertUpload = () => {
               type={type === 'floor' ? 'number' : 'text'}
               className={cls(
                 type === 'floor' ? 'w-[77px] ' : 'w-[295px] ',
-                errors?.[type] ? 'border-[1px] border-red-500 bg-fail-2' : 'bg-gray-2',
+                errors?.[type]
+                  ? 'border-[1px] border-red-500 bg-fail-2'
+                  : 'bg-gray-2',
                 'px-[16px] text-[14px] rounded-[4px]'
               )}
               {...register(type, { required: true })}
@@ -68,7 +72,10 @@ const InsertUpload = () => {
       })}
       <div className="flex justify-end mt-[16px]">
         <SaveBtn
-          disabled={onSaveBtn<InsertUploadProps, InfoIPProps>({ watch, inputList: infoIP })}
+          disabled={onSaveBtn<InsertUploadProps, InfoIPProps>({
+            watch,
+            inputList: infoIP
+          })}
           onClick={handleSubmit(handleInsertUpload)}
         />
       </div>

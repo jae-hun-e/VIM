@@ -1,6 +1,8 @@
-import * as XLSX from 'xlsx';
 import { useState } from 'react';
-import { InsertUploadProps } from '@/app/_types/reqestType';
+
+import * as XLSX from 'xlsx';
+
+import { InsertUploadProps } from '@customTypes/reqestType';
 const useReadExcel = () => {
   const [data, setData] = useState<InsertUploadProps[] | null>(null);
   const readExcel = (file: File) => {

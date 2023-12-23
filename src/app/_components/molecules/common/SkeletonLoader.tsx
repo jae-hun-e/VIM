@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import { cls } from '@utils/utils';
 
 interface Style {
@@ -10,7 +11,10 @@ interface ParentsProps extends Style {
 }
 const Container = ({ children, className = 'w-full h-full' }: ParentsProps) => {
   return (
-    <div className={cls('shadow rounded-md p-4 mx-auto animate-pulse', className)}>{children}</div>
+    <div
+      className={cls('shadow rounded-md p-4 mx-auto animate-pulse', className)}>
+      {children}
+    </div>
   );
 };
 
@@ -32,7 +36,11 @@ const Title = ({ title, className = '' }: TitleProps) => {
 interface RepeatProps extends ParentsProps {
   repeat?: number;
 }
-const Box = ({ children, className = 'flex flex-col gap-4', repeat = 1 }: RepeatProps) => {
+const Box = ({
+  children,
+  className = 'flex flex-col gap-4',
+  repeat = 1
+}: RepeatProps) => {
   const repeatArr = new Array(repeat).fill(null);
 
   return <div className={className}>{repeatArr.map(() => children)}</div>;

@@ -1,14 +1,19 @@
 'use client';
-import UploadBtn from '@components/molecules/button/UploadBtn';
 import { ChangeEvent, useEffect } from 'react';
-import useReadExcel from '@hooks/useReadExcel';
+
 import { useMutation } from '@tanstack/react-query';
-import { postFileUploadIP } from '@services/post/postFormData';
+
 import SaveBtn from '@components/molecules/button/SaveBtn';
+import UploadBtn from '@components/molecules/button/UploadBtn';
+import useReadExcel from '@hooks/useReadExcel';
+import { postFileUploadIP } from '@services/post/postFormData';
 
 const ExcelFile = () => {
   const { data, readExcel } = useReadExcel();
-  const { mutate } = useMutation({ mutationKey: [postFileUploadIP], mutationFn: postFileUploadIP });
+  const { mutate } = useMutation({
+    mutationKey: [postFileUploadIP],
+    mutationFn: postFileUploadIP
+  });
 
   const excelExport = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -30,7 +35,9 @@ const ExcelFile = () => {
         </label>
         <input id="file" type="file" hidden={true} onChange={excelExport} />
       </div>
-      <p className="text-[20px] text-gray-4 mb-[20px]">액셀 파일 형식을 지켜주세요</p>
+      <p className="text-[20px] text-gray-4 mb-[20px]">
+        액셀 파일 형식을 지켜주세요
+      </p>
       <div className="w-full h-[648px] bg-gray-3 rounded-xl" />
 
       <div className="flex justify-end items-center my-[32px]">

@@ -30,7 +30,7 @@
       "@stores/*": ["./src/app/_stores/*"],
       "@styles/*" : ["./src/app/_styles/*"],
       "@customTypes/*": ["./src/app/_types/*"],
-      "@utils/*": ["./src/app/_utils/*"]
+      "@utils/*": ["./src/app/_utils/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

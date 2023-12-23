@@ -1,7 +1,8 @@
 import { LegacyRef, ReactNode, useEffect, useMemo } from 'react';
-import { cls } from '@utils/utils';
 import { createPortal } from 'react-dom';
+
 import useClickAway from '@hooks/useClickAway';
+import { cls } from '@utils/utils';
 
 interface ModelProps {
   className?: string;
@@ -16,7 +17,8 @@ const Model = ({ className = '', children, isOpen, onClose }: ModelProps) => {
   useEffect(() => {
     document?.body?.appendChild(el);
     return () => {
-      if (document?.body?.lastElementChild === el) document?.body?.removeChild(el);
+      if (document?.body?.lastElementChild === el)
+        document?.body?.removeChild(el);
     };
   }, []);
 

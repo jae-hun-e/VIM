@@ -1,10 +1,12 @@
 'use client';
-import SearchList from '@components/molecules/list/SearchList';
-import { Layout } from '@/app/_types/commendTypes';
-import InfoModel from '@components/organisms/InfoModel';
-import { useRecoilState } from 'recoil';
-import { selectedPeople } from '@stores/atoms';
 import { useEffect, useState } from 'react';
+
+import { useRecoilState } from 'recoil';
+
+import SearchList from '@components/molecules/list/SearchList';
+import InfoModel from '@components/organisms/InfoModel';
+import { Layout } from '@customTypes/commendTypes';
+import { selectedPeople } from '@stores/atoms';
 
 const ManagementIP = () => {
   const [selected, setSelected] = useRecoilState(selectedPeople);
@@ -22,7 +24,13 @@ const ManagementIP = () => {
   return (
     <>
       <SearchList layOut={Layout.grid} />
-      {visible && <InfoModel info={selected.info} visible={visible} onClose={handleCloseModel} />}
+      {visible && (
+        <InfoModel
+          info={selected.info}
+          visible={visible}
+          onClose={handleCloseModel}
+        />
+      )}
     </>
   );
 };

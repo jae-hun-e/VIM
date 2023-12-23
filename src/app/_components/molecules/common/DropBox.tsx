@@ -1,7 +1,9 @@
-import { Listbox } from '@headlessui/react';
-import { dropBoxList } from '@constants/constantsList';
 import { Dispatch, SetStateAction } from 'react';
-import { SelectedProps } from '@/app/_types/commendTypes';
+
+import { Listbox } from '@headlessui/react';
+
+import { dropBoxList } from '@constants/constantsList';
+import { SelectedProps } from '@customTypes/commendTypes';
 
 interface DropBoxProps {
   selected: SelectedProps;
@@ -21,12 +23,17 @@ const DropBox = ({ selected, onChange }: DropBoxProps) => {
             <Listbox.Option
               key={item.id}
               className={({ active }) =>
-                `relative py-2 px-3 ${active ? 'bg-sub-2 text-main' : 'text-gray-900'}`
+                `relative py-2 px-3 ${
+                  active ? 'bg-sub-2 text-main' : 'text-gray-900'
+                }`
               }
               value={item}>
               {({ selected }) => (
                 <>
-                  <span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}>
+                  <span
+                    className={`block truncate ${
+                      selected ? 'font-medium' : 'font-normal'
+                    }`}>
                     {item.name}
                   </span>
                 </>

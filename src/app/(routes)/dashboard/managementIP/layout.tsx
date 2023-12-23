@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import Box from '@components/atoms/Box';
 import SearchBar from '@components/organisms/SearchBar';
 

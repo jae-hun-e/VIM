@@ -1,6 +1,7 @@
 import { atom } from 'recoil';
-import { ResponsePeople } from '@/app/_types/ResponseType';
 import { recoilPersist } from 'recoil-persist';
+
+import { ResponsePeople } from '@customTypes/ResponseType';
 
 const { persistAtom } = recoilPersist();
 export const isDefaultSetup = atom<boolean>({

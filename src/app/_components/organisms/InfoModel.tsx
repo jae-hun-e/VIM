@@ -1,18 +1,20 @@
-import Model from '@components/molecules/common/Model';
-import EditBtn from '@components/molecules/button/EditBtn';
-import DeleteBtn from '@components/molecules/button/DeleteBtn';
 import { useState } from 'react';
-import SaveBtn from '@components/molecules/button/SaveBtn';
-import { cls } from '@utils/utils';
 import { useForm } from 'react-hook-form';
-import { InsertUploadProps } from '@/app/_types/reqestType';
-import { InfoArrProps } from '@/app/_types/commendTypes';
+
 import { useMutation } from '@tanstack/react-query';
-import { patchPeopleInfo } from '@services/patch/patchInfo';
-import { deletePeopleInfo } from '@services/delete/deleteInfo';
-import { ResponsePeople } from '@/app/_types/ResponseType';
 import { useRecoilState } from 'recoil';
+
+import DeleteBtn from '@components/molecules/button/DeleteBtn';
+import EditBtn from '@components/molecules/button/EditBtn';
+import SaveBtn from '@components/molecules/button/SaveBtn';
+import Model from '@components/molecules/common/Model';
+import { InfoArrProps } from '@customTypes/commendTypes';
+import { InsertUploadProps } from '@customTypes/reqestType';
+import { ResponsePeople } from '@customTypes/ResponseType';
+import { deletePeopleInfo } from '@services/delete/deleteInfo';
+import { patchPeopleInfo } from '@services/patch/patchInfo';
 import { searchList } from '@stores/atoms';
+import { cls } from '@utils/utils';
 import { validatedIpAddress, validatedMACAddress } from '@utils/validation';
 
 interface InfoModelProps {
@@ -23,7 +25,8 @@ interface InfoModelProps {
 const InfoModel = ({ info, visible, onClose }: InfoModelProps) => {
   const [isSetup, setIsSetup] = useState(true);
   const [list, setList] = useRecoilState(searchList);
-  const { register, handleSubmit, watch, setError } = useForm<InsertUploadProps>();
+  const { register, handleSubmit, watch, setError } =
+    useForm<InsertUploadProps>();
 
   const { mutate: patchMutate } = useMutation({
     mutationKey: [patchPeopleInfo],
@@ -31,7 +34,9 @@ const InfoModel = ({ info, visible, onClose }: InfoModelProps) => {
     onMutate: (data) => {
       if (!list) return;
       const newList = [...list];
-      const idx = newList.findIndex(({ ipAddress }) => ipAddress === data.ipAddress);
+      const idx = newList.findIndex(
+        ({ ipAddress }) => ipAddress === data.ipAddress
+      );
       newList[idx] = { ...newList[idx], ...data };
       setList(newList);
     }
@@ -124,7 +129,10 @@ const InfoModel = ({ info, visible, onClose }: InfoModelProps) => {
       </div>
 
       <div className="flex  justify-center gap-[24px]">
-        <EditBtn onClick={handlePatch} className={cls(isSetup ? 'block' : 'hidden')} />
+        <EditBtn
+          onClick={handlePatch}
+          className={cls(isSetup ? 'block' : 'hidden')}
+        />
 
         <SaveBtn
           disabled={onSaveBtn()}

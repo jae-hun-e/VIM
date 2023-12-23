@@ -19,7 +19,10 @@ export const onSaveBtn = <T extends FieldValues, K extends FieldValues>({
     for (let i = 1; i <= totalFloor; i++) {
       if (
         // @ts-ignore
-        !(watch(`admin_floor_end_ip_address_${i}F`) && watch(`admin_floor_start_ip_address_${i}F`))
+        !(
+          watch(`admin_floor_end_ip_address_${i}F`) &&
+          watch(`admin_floor_start_ip_address_${i}F`)
+        )
       )
         return false;
     }
