@@ -1,12 +1,13 @@
 'use client';
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import { useState } from 'react';
 
 import FailModel from '@components/organisms/FailModel';
-import { APP_TITLE, constantsList } from '@constants/constantsList';
+import { APP_TITLE, constantsList, routerHref } from '@constants/constantsList';
 import useCheckPath from '@hooks/useCheckPath';
 import { isDefaultSetup, searchList } from '@stores/atoms';
 import { cls } from '@utils/utils';
@@ -30,9 +31,11 @@ const SideBar = () => {
 
   return (
     <section className="flex flex-col min-w-[244px] h-screen min-h-[1080px]  bg-default">
-      <h1 className="text-[24px] font-bold my-[40px] ml-[24px] text-white">
+      <Link
+        href={routerHref.dashboard}
+        className="text-[24px] font-bold my-[40px] ml-[24px] text-white cursor-pointer">
         {APP_TITLE}
-      </h1>
+      </Link>
       <nav className="flex flex-col text-gray-4">
         {constantsList.map((nav) => (
           <div

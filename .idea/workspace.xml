@@ -4,34 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d94d011-eaaf-4ea6-90e1-9140c0f23e2d" name="변경" comment="[Fixed] managementIP에서 나갔다 와도 데이터가 남아있는 error &#10;&#10;SideBar.tsx에서 탭 이동 시 searchList atom 비우는 식으로 해결">
-      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/admin/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/admin/layout.tsx" afterDir="false" />
+    <list default="true" id="1d94d011-eaaf-4ea6-90e1-9140c0f23e2d" name="변경" comment="[Feat] dashboard page 생성">
       <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/admin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/admin/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/@fileUpload/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/@fileUpload/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/@insertUpload/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/@insertUpload/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/managementIP/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/managementIP/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/remainIP/error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/remainIP/error.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/statusIP/@structural/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/statusIP/@structural/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(routes)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(routes)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_components/molecules/common/DropBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/molecules/common/DropBox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_components/molecules/common/SideBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/molecules/common/SideBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_components/organisms/InfoModel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/organisms/InfoModel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_components/organisms/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/organisms/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_components/organisms/SearchBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_components/organisms/SearchBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_hooks/useCheckPath.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_hooks/useCheckPath.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_hooks/useClickAway.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_hooks/useClickAway.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_hooks/useReadExcel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_hooks/useReadExcel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_services/common/Hydrated.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/common/Hydrated.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_services/common/ProviderReactQuery.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/common/ProviderReactQuery.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_services/common/createAxios.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/common/createAxios.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_services/common/customError.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/common/customError.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_services/common/getQueryClient.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_services/common/getQueryClient.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_stores/RecoilRootProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_stores/RecoilRootProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/_utils/activation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/_utils/activation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,23 +137,7 @@
       <workItem from="1703120022060" duration="21208000" />
       <workItem from="1703149795502" duration="189000" />
       <workItem from="1703302112174" duration="4967000" />
-      <workItem from="1703307254767" duration="16539000" />
-    </task>
-    <task id="LOCAL-00001" summary="[setting] 초기 세팅 + react-query SSR 세팅">
-      <option name="closed" value="true" />
-      <created>1701409285138</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1701409285138</updated>
-    </task>
-    <task id="LOCAL-00002" summary="[setting] setting&#10;&#10;1. recoil + react-hook-form setting &#10;2. 라우터 구조잡기&#10;3. 디자인 토큰 setting (color, font, Icon)&#10;4. SVG 이미지 Import setting (@svgr/webpack)">
-      <option name="closed" value="true" />
-      <created>1701663688002</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1701663688002</updated>
+      <workItem from="1703307254767" duration="16919000" />
     </task>
     <task id="LOCAL-00003" summary="[feat] register page&#10;&#10;1. register header&#10;2. 기본 tab, 상세 tab, login tab&#10;3. login 로직 완성">
       <option name="closed" value="true" />
@@ -557,7 +515,23 @@
       <option name="project" value="LOCAL" />
       <updated>1703328766757</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="[Fixed] admin type 변경되서 setError도 변경해줌">
+      <option name="closed" value="true" />
+      <created>1703334722488</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1703334722489</updated>
+    </task>
+    <task id="LOCAL-00051" summary="[Feat] dashboard page 생성">
+      <option name="closed" value="true" />
+      <created>1703335029124</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1703335029124</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,8 +549,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[feat] &lt;임시&gt;login 유무 local에 저장&#10;&#10;1. local에 저장해서 dsahboard로 넘겨주기" />
-    <MESSAGE value="[feat] admin config page&#10;&#10;초기 로딩 시 &#10;1. getAdminInfo 로 데이터 불러옴 &#10;  - 데이터 있을 시 기입 &amp; setIsSetup(true)&#10;  - 없으면 pass&#10;&#10;수정 시&#10;1. 첫번째로 mutateAsync로 configReq 보내고&#10;2. 그 다음 mutate로 floorReq 보냄 &#10;3. setIsSetup(true)" />
     <MESSAGE value="[feat] useReadExcel 구현&#10;&#10;1. xlsx 라이브러리를 이용해서 excel 파일 읽는 커스텀 훅 생성" />
     <MESSAGE value="[fixed] input type number에서 text로 변경" />
     <MESSAGE value="[feat] api 연결 + 더미데이터 삭제 &#10;&#10;1. ip 현황에 floor별, dept별 데이터 연결&#10;2. searchBar" />
@@ -600,7 +572,9 @@
     <MESSAGE value="[Feat] StatusIP 병렬 라우팅" />
     <MESSAGE value="[Refactor] import rules 추가 &#10;&#10;1. next 14에서 eslint-plugin-import 쓰려면 node 버전이 18.17.0 이상이어야 한다고 한다. 그래서 node 버전 lts로 업그레이드함&#10;2. 모든 파일 import 변경 하도록 스크립트로 lint:fix 추가" />
     <MESSAGE value="[Fixed] managementIP에서 나갔다 와도 데이터가 남아있는 error &#10;&#10;SideBar.tsx에서 탭 이동 시 searchList atom 비우는 식으로 해결" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Fixed] managementIP에서 나갔다 와도 데이터가 남아있는 error &#10;&#10;SideBar.tsx에서 탭 이동 시 searchList atom 비우는 식으로 해결" />
+    <MESSAGE value="[Fixed] admin type 변경되서 setError도 변경해줌" />
+    <MESSAGE value="[Feat] dashboard page 생성" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Feat] dashboard page 생성" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

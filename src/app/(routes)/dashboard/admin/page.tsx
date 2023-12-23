@@ -22,11 +22,7 @@ import { postAdminFloor } from '@services/post/postFormData';
 import { isDefaultSetup } from '@stores/atoms';
 import { onSaveBtn } from '@utils/activation';
 import { cls, pageNation } from '@utils/utils';
-import {
-  validatedIpAddress,
-  validatedMACAddress,
-  validatedScopeIPAddress
-} from '@utils/validation';
+import { validatedIpAddress, validatedScopeIPAddress } from '@utils/validation';
 
 const AdminPage = () => {
   const [curPage, setCurPage] = useState<number>(0);

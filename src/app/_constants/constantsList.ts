@@ -3,6 +3,7 @@ import { InfoIPProps } from '@customTypes/commendTypes';
 export const APP_TITLE = '비비아이피병원';
 
 export const routerHref = {
+  dashboard: '/dashboard',
   admin: '/dashboard/admin',
   allocationIP: '/dashboard/allocationIP',
   remainIP: '/dashboard/remainIP',
