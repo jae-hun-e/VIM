@@ -2,17 +2,18 @@
 import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 import FailModel from '@components/organisms/FailModel';
 import { APP_TITLE, constantsList } from '@constants/constantsList';
 import useCheckPath from '@hooks/useCheckPath';
-import { isDefaultSetup } from '@stores/atoms';
+import { isDefaultSetup, searchList } from '@stores/atoms';
 import { cls } from '@utils/utils';
 
 const SideBar = () => {
   const [tab, setTab] = useCheckPath();
   const isSetup = useRecoilValue(isDefaultSetup);
+  const setList = useSetRecoilState(searchList);
   const router = useRouter();
   const [openModel, setOpenModel] = useState<boolean>(false);
 
@@ -22,6 +23,7 @@ const SideBar = () => {
       return;
     }
     setTab(title);
+    setList(null);
     router.push(href);
   };
 

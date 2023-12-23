@@ -10,7 +10,8 @@ import DropBox from '@components/molecules/common/DropBox';
 import { getSearchList } from '@services/get/getResponse';
 import { searchList } from '@stores/atoms';
 
-// todo custom hook 으로 분리 + 데이터 단순화
+// todo custom hook 으로 분리
+// todo 데이터 단순화
 const SearchBar = () => {
   const {
     register,
@@ -26,7 +27,7 @@ const SearchBar = () => {
   });
 
   const { data: searchData } = useQuery({
-    queryKey: [getSearchList, search],
+    queryKey: [getSearchList, search.keyword, search.value],
     queryFn: () => getSearchList(search),
     enabled: !!search.keyword
   });
