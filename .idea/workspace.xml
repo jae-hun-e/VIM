@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d94d011-eaaf-4ea6-90e1-9140c0f23e2d" name="변경" comment="[Feat] dashboard page 생성">
-      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/admin/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/admin/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/@fileUpload/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/@fileUpload/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,11 +63,11 @@
       <recent name="$PROJECT_DIR$/src/app/(routes)/dashboard/managementIP" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP" />
       <recent name="$PROJECT_DIR$/src/app/(routes)/dashboard/allocationIP/@fileUpload" />
       <recent name="$PROJECT_DIR$/src/app/(routes)/dashboard/statusIP/@findInfo" />
       <recent name="$PROJECT_DIR$/src/app/(routes)/dashboard" />
-      <recent name="$PROJECT_DIR$/src/app/_components/molecules/upload" />
     </key>
   </component>
   <component name="RunManager" selected="npm.lint:fix">
@@ -137,7 +138,13 @@
       <workItem from="1703120022060" duration="21208000" />
       <workItem from="1703149795502" duration="189000" />
       <workItem from="1703302112174" duration="4967000" />
-      <workItem from="1703307254767" duration="16919000" />
+      <workItem from="1703307254767" duration="18323000" />
+      <workItem from="1703376779463" duration="595000" />
+      <workItem from="1703388245920" duration="581000" />
+      <workItem from="1703728816354" duration="1271000" />
+      <workItem from="1703740700145" duration="2326000" />
+      <workItem from="1703816824084" duration="2527000" />
+      <workItem from="1704089750419" duration="3307000" />
     </task>
     <task id="LOCAL-00003" summary="[feat] register page&#10;&#10;1. register header&#10;2. 기본 tab, 상세 tab, login tab&#10;3. login 로직 완성">
       <option name="closed" value="true" />

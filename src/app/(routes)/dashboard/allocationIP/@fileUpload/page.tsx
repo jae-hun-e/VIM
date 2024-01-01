@@ -1,6 +1,8 @@
 'use client';
 // import { useMutation } from '@tanstack/react-query';
 
+import Image from 'next/image';
+
 import { ChangeEvent, useEffect } from 'react';
 
 import SaveBtn from '@components/molecules/button/SaveBtn';
@@ -38,10 +40,18 @@ const ExcelFile = () => {
       <p className="text-[20px] text-gray-4 mb-[20px]">
         액셀 파일 형식을 지켜주세요
       </p>
-      <div className="w-full h-[648px] bg-gray-3 rounded-xl" />
+      {/*<div className="w-full h-[648px] bg-gray-3 rounded-xl" />*/}
+      <Image
+        src={'/excel.png'}
+        alt={'excel'}
+        width={0}
+        height={0}
+        sizes="100vw"
+        style={{ width: '100%', height: 'auto' }}
+      />
 
       <div className="flex justify-end items-center my-[32px]">
-        <p className="flex-grow text-center">완료 메시지</p>
+        <p className="flex-grow text-center">IP 100건 업로드 완료</p>
         <SaveBtn disabled={false} />
       </div>
     </>
