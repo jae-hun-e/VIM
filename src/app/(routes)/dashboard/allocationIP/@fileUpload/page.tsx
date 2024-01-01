@@ -40,7 +40,6 @@ const ExcelFile = () => {
       <p className="text-[20px] text-gray-4 mb-[20px]">
         액셀 파일 형식을 지켜주세요
       </p>
-      {/*<div className="w-full h-[648px] bg-gray-3 rounded-xl" />*/}
       <Image
         src={'/excel.png'}
         alt={'excel'}
