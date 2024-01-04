@@ -2,9 +2,9 @@ import * as XLSX from 'xlsx';
 
 import { useState } from 'react';
 
-import { InsertUploadProps } from '@customTypes/reqestType';
+import { InsertUploadBulkProps } from '@customTypes/reqestType';
 const useReadExcel = () => {
-  const [data, setData] = useState<InsertUploadProps[] | null>(null);
+  const [data, setData] = useState<InsertUploadBulkProps[] | null>(null);
   const readExcel = (file: File) => {
     const fileReader = new FileReader();
     fileReader.readAsArrayBuffer(file);

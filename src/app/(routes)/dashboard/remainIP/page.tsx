@@ -1,6 +1,7 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
 
+import Box from '@components/atoms/Box';
 import { ResponseRemainIP } from '@customTypes/ResponseType';
 import { getRemainIP } from '@services/get/getResponse';
 import { mapping } from '@utils/utils';
@@ -21,7 +22,7 @@ const RemainIP = () => {
   console.log(floorList);
 
   return (
-    <>
+    <Box className="h-[70vh]">
       {floorList ? (
         Object.keys(floorList).map((floor) => {
           return (
@@ -38,7 +39,7 @@ const RemainIP = () => {
       ) : (
         <div>데이터가 없습니다. </div>
       )}
-    </>
+    </Box>
   );
 };
 

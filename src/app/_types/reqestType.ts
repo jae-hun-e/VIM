@@ -28,6 +28,15 @@ export interface InsertUploadProps {
   department: string;
 }
 
+export interface InsertUploadBulkProps {
+  층수: number;
+  부서: string;
+  'MAC Address': string;
+  'IP Address': string;
+  '담당 사원 이름': string;
+  용도: string;
+}
+
 export interface SearchProps {
   keyword: string;
   value: string;

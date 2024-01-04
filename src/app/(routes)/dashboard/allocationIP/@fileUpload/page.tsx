@@ -1,6 +1,5 @@
 'use client';
-// import { useMutation } from '@tanstack/react-query';
-
+import { useMutation } from '@tanstack/react-query';
 import Image from 'next/image';
 
 import { ChangeEvent, useEffect } from 'react';
@@ -8,14 +7,14 @@ import { ChangeEvent, useEffect } from 'react';
 import SaveBtn from '@components/molecules/button/SaveBtn';
 import UploadBtn from '@components/molecules/button/UploadBtn';
 import useReadExcel from '@hooks/useReadExcel';
-// import { postFileUploadIP } from '@services/post/postFormData';
+import { postFileUploadIP } from '@services/post/postFormData';
 
 const ExcelFile = () => {
   const { data, readExcel } = useReadExcel();
-  // const { mutate } = useMutation({
-  //   mutationKey: [postFileUploadIP],
-  //   mutationFn: postFileUploadIP
-  // });
+  const { mutate } = useMutation({
+    mutationKey: [postFileUploadIP],
+    mutationFn: postFileUploadIP
+  });
 
   const excelExport = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -24,9 +23,17 @@ const ExcelFile = () => {
   };
 
   useEffect(() => {
-    console.log(data);
     if (!data) return;
-    // mutate(data);
+    const bulkData = data.map((item) => ({
+      ipAddress: item['IP Address'],
+      macAddress: item['MAC Address'],
+      name: item['담당 사원 이름'],
+      floor: item['층수'],
+      department: item['부서']
+    }));
+    console.log('bulkData', bulkData);
+
+    mutate(bulkData);
   }, [data]);
 
   return (

@@ -32,7 +32,6 @@ export async function postFileUploadIP(data: InsertUploadProps[]) {
   console.log('res-postFileUploadIP', res);
   return res;
 }
-
 export async function postInsertIP(data: InsertUploadProps) {
   const res = await client.post(`/address`, data);
   console.log('res-postInsertIP', res);
