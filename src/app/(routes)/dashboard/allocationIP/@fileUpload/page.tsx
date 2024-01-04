@@ -2,14 +2,16 @@
 import { useMutation } from '@tanstack/react-query';
 import Image from 'next/image';
 
-import { ChangeEvent, useEffect } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
+import { InsertUploadProps } from '@/app/_types/reqestType';
 import SaveBtn from '@components/molecules/button/SaveBtn';
 import UploadBtn from '@components/molecules/button/UploadBtn';
 import useReadExcel from '@hooks/useReadExcel';
 import { postFileUploadIP } from '@services/post/postFormData';
 
 const ExcelFile = () => {
+  const [bulkData, setBulkData] = useState<InsertUploadProps[]>([]);
   const { data, readExcel } = useReadExcel();
   const { mutate } = useMutation({
     mutationKey: [postFileUploadIP],
@@ -22,18 +24,23 @@ const ExcelFile = () => {
     readExcel(files[0]);
   };
 
+  const handleSave = () => {
+    mutate(bulkData);
+  };
+
   useEffect(() => {
     if (!data) return;
+
     const bulkData = data.map((item) => ({
-      ipAddress: item['IP Address'],
-      macAddress: item['MAC Address'],
-      name: item['담당 사원 이름'],
-      floor: item['층수'],
-      department: item['부서']
+      ipAddress: item['IP Address']?.trim(),
+      macAddress: item['MAC Address']?.trim(),
+      name: item['담당 사원 이름']?.trim(),
+      department: item['부서']?.trim(),
+      isComputer: item['용도'] ? item['용도'].includes('컴퓨터') : true
     }));
     console.log('bulkData', bulkData);
 
-    mutate(bulkData);
+    setBulkData(bulkData);
   }, [data]);
 
   return (
@@ -57,8 +64,12 @@ const ExcelFile = () => {
       />
 
       <div className="flex justify-end items-center my-[32px]">
-        <p className="flex-grow text-center">IP 100건 업로드 완료</p>
-        <SaveBtn disabled={false} />
+        <p className="flex-grow text-center">
+          {!!bulkData?.length
+            ? `IP ${bulkData.length}건 업로드 완료`
+            : '파일을 업로드 해주세요'}
+        </p>
+        <SaveBtn disabled={!!bulkData?.length} onClick={handleSave} />
       </div>
     </>
   );
