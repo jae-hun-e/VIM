@@ -35,10 +35,10 @@ const ExcelFile = () => {
       ipAddress: item['IP Address']?.trim(),
       macAddress: item['MAC Address']?.trim(),
       name: item['담당 사원 이름']?.trim(),
+      floor: item['층수'],
       department: item['부서']?.trim(),
       isComputer: item['용도'] ? item['용도'].includes('컴퓨터') : true
     }));
-    console.log('bulkData', bulkData);
 
     setBulkData(bulkData);
   }, [data]);

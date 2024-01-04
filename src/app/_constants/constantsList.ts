@@ -41,7 +41,8 @@ export const infoIP: Array<InfoIPProps> = [
   { id: 2, title: 'MAC address', type: 'macAddress' },
   { id: 3, title: '사원 이름', type: 'name' },
   { id: 4, title: '층 수', type: 'floor' },
-  { id: 5, title: '부서 명', type: 'department' }
+  { id: 5, title: '부서 명', type: 'department' },
+  { id: 6, title: '용도', type: 'isComputer' }
 ];
 
 export const statusTabList = [

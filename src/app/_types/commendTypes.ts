@@ -22,10 +22,9 @@ export interface SelectedProps {
   type: string;
 }
 
-type TypeList = 'ipAddress' | 'macAddress' | 'name' | 'floor' | 'department';
 export interface InfoArrProps {
   title: string;
-  type: TypeList;
+  type: typeList;
   value?: string | number;
 }
 
@@ -43,7 +42,8 @@ const types = {
   macAddress: 'macAddress',
   name: 'name',
   floor: 'floor',
-  department: 'department'
+  department: 'department',
+  isComputer: 'isComputer'
 } as const;
 
 type typeList = (typeof types)[keyof typeof types];

@@ -43,6 +43,10 @@ const InsertUpload = () => {
       );
       return;
     }
+
+    console.log(data.isComputer);
+    data.isComputer = String(data.isComputer).includes('컴퓨터');
+
     mutate(data);
     reset();
   };
