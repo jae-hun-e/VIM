@@ -31,13 +31,13 @@ const InfoModel = ({ info, visible, onClose }: InfoModelProps) => {
   const { mutate: patchMutate } = useMutation({
     mutationKey: [patchPeopleInfo],
     mutationFn: patchPeopleInfo,
-    onMutate: ({ data }) => {
+    onMutate: ({ data, prevIp }) => {
       if (!list) return;
       const newList = [...list];
-      const idx = newList.findIndex(
-        ({ ipAddress }) => ipAddress === data.ipAddress
-      );
+
+      const idx = newList.findIndex(({ ipAddress }) => ipAddress === prevIp);
       newList[idx] = { ...newList[idx], ...data };
+
       setList(newList);
     }
   });
