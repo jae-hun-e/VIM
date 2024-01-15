@@ -31,7 +31,7 @@ const InfoModel = ({ info, visible, onClose }: InfoModelProps) => {
   const { mutate: patchMutate } = useMutation({
     mutationKey: [patchPeopleInfo],
     mutationFn: patchPeopleInfo,
-    onMutate: (data) => {
+    onMutate: ({ data }) => {
       if (!list) return;
       const newList = [...list];
       const idx = newList.findIndex(
@@ -90,7 +90,7 @@ const InfoModel = ({ info, visible, onClose }: InfoModelProps) => {
       return;
     }
 
-    patchMutate(data);
+    patchMutate({ data, prevIp: ipAddress });
     onClose();
   };
 

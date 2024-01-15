@@ -29,10 +29,11 @@ export const constantsList = [
 ];
 
 export const defaultSettingState = [
-  { title: 'Gateway', type: 'admin_gateway' },
-  { title: 'DNS', type: 'admin_dns' },
-  { title: '시작 IP', type: 'admin_startIpAddress' },
-  { title: '종료 IP', type: 'admin_endIpAddress' },
+  { title: 'Gateway', type: 'admin_gateway_ip_address' },
+  { title: 'DNS', type: 'admin_dns_address' },
+  { title: '시작 IP', type: 'admin_start_ip_address' },
+  { title: '종료 IP', type: 'admin_end_ip_address' },
+  { title: '서브넷', type: 'admin_subnet_mask_key' },
   { title: '층 수', type: 'admin_floor' }
 ];
 

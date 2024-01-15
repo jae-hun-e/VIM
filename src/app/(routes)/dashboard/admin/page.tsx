@@ -24,11 +24,12 @@ import { onSaveBtn } from '@utils/activation';
 import { cls, pageNation } from '@utils/utils';
 import { validatedIpAddress, validatedScopeIPAddress } from '@utils/validation';
 
+const FLOOR = 'admin_floor';
 const AdminPage = () => {
   const [curPage, setCurPage] = useState<number>(0);
   const [isSetup, setIsSetup] = useRecoilState(isDefaultSetup);
   const { data: adminConfigRes } = useQuery({
-    queryKey: [getAdminInfo],
+    queryKey: [getAdminInfo, 'adminConfig'],
     queryFn: getAdminInfo,
     enabled: !!getAdminInfo
   });
@@ -50,9 +51,6 @@ const AdminPage = () => {
     formState: { errors }
   } = useForm<DefaultSettingState>();
 
-  const totalFloor = Number(watch('admin_floor'));
-  const floorPages: number[][] = pageNation(totalFloor);
-
   useEffect(() => {
     if (adminConfigRes?.data?.length) {
       for (const { key, value } of adminConfigRes.data) {
@@ -62,12 +60,15 @@ const AdminPage = () => {
     }
   }, [adminConfigRes]);
 
+  const totalFloor = Number(watch(FLOOR));
+  const floorPages: number[][] = pageNation(totalFloor);
+
   const toggleSetup = () => setIsSetup(!isSetup);
 
   const handleSubmitAdminConfig = async (data: DefaultSettingState) => {
-    if (!validatedIpAddress(data.admin_gateway)) {
+    if (!validatedIpAddress(data.admin_gateway_ip_address)) {
       setError(
-        'admin_gateway',
+        'admin_gateway_ip_address',
         { type: 'custom', message: 'ip주소값이 잘못 되었습니다.' },
         { shouldFocus: true }
       );
@@ -76,23 +77,19 @@ const AdminPage = () => {
 
     if (
       !validatedScopeIPAddress(
-        data.admin_startIpAddress,
-        data.admin_endIpAddress
+        data.admin_start_ip_address,
+        data.admin_end_ip_address
       )
     ) {
       setError(
-        'admin_startIpAddress',
+        'admin_start_ip_address',
         { type: 'custom', message: 'ip주소값이 잘못 되었습니다.' },
         { shouldFocus: true }
       );
       return;
     }
-    const configReq = { keys: [] } as AdminConfig;
 
-    for (const { type } of defaultSettingState) {
-      configReq.keys.push({ key: type, value: data[type] });
-    }
-    await configMutate(configReq);
+    await configMutate(data);
 
     const floorReq = { floors: [] } as AdminFloor;
     for (let i = 1; i <= totalFloor; i++) {
@@ -134,7 +131,7 @@ const AdminPage = () => {
                 type="text"
                 id={type}
                 className={cls(
-                  type === 'admin_floor' ? 'w-[77px]' : 'w-[295px]',
+                  type === FLOOR ? 'w-[77px]' : 'w-[295px]',
                   isSetup ? 'bg-white' : 'bg-gray-2',
                   'h-[36px] bg-gray-2 rounded-[4px] px-[16px]'
                 )}
@@ -153,10 +150,10 @@ const AdminPage = () => {
             onClick={() => setCurPage(curPage - 1)}
           />
         )}
-        {watch('admin_floor') &&
+        {watch(FLOOR) &&
           FloorIPSetting({ page: floorPages[curPage], register, isSetup })}
         {totalFloor > 4 &&
-          curPage < Math.ceil(Number(watch('admin_floor')) / 4) - 1 && (
+          curPage < Math.ceil(Number(watch(FLOOR)) / 4) - 1 && (
             <RightArrowBtn
               className="pb-[72px]"
               onClick={() => setCurPage(curPage + 1)}

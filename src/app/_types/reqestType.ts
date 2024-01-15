@@ -1,15 +1,12 @@
+import { defaultSettingState } from '@constants/constantsList';
+
 export interface LoginFormProps {
   username: string;
   password: string;
 }
 
 export interface AdminConfig {
-  keys: ConfigKey[];
-}
-
-interface ConfigKey {
-  key: string;
-  value: string;
+  [keys: string]: string;
 }
 
 export interface AdminFloor {

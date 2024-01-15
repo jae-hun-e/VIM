@@ -8,18 +8,25 @@ import { client } from '@services/common/createAxios';
 
 export async function patchAdminConfig(data: AdminConfig) {
   const res = await client.patch<ResponseType<ResponseAdminConfig>>(
-    `/admin/config`,
+    `/admin/ip`,
     data
   );
   console.log('res-patchAdminConfig', res);
   return res.data;
 }
 
-export async function patchPeopleInfo(data: InsertUploadProps) {
+export async function patchPeopleInfo({
+  data,
+  prevIp
+}: {
+  data: InsertUploadProps;
+  prevIp: string;
+}) {
   const res = await client.patch<ResponseType<ResponsePeople>>(
-    `/address/${data.ipAddress}`,
+    `/address/${prevIp}`,
     data
   );
+
   console.log('res-patchPeopleInfo', res);
   return res.data;
 }
